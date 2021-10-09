@@ -1,7 +1,11 @@
-import { useEffect, useRef, useState } from 'react';
+import { MutableRefObject, RefObject, useEffect, useRef, useState } from 'react';
 import styled from 'styled-components';
 
-const StyledCanvas = styled.canvas`
+interface IStyledCanvas {
+  ref?: any;
+}
+
+const StyledCanvas = styled.canvas<IStyledCanvas>`
   position: absolute;
   top: 0; left: 0;
   width: 100%;
@@ -9,7 +13,17 @@ const StyledCanvas = styled.canvas`
   background: radial-gradient(circle, rgba(36,0,0,1) 0%, rgba(0,0,0,1) 53%, rgba(1,51,61,1) 86%, rgba(1,94,112,1) 100%);
 `;
 
-let mouse = {};
+interface IMouse {
+  x: number,
+  y: number,
+  radius: number,
+}
+
+let mouse: IMouse = {
+  x: 0,
+  y: 0,
+  radius: 0,
+};
 
 const getRandomColor = () => {
   const letters = '0123456789ABCDEF';
@@ -22,7 +36,14 @@ const getRandomColor = () => {
 
 // Create particle
 class Particle {
-  constructor(x, y, directionX, directionY, size, color, id) {
+  id: number;
+  x: number;
+  y: number;
+  directionX: number;
+  directionY: number;
+  size: number;
+  color: string;
+  constructor(x: number, y: number, directionX: number, directionY: number, size: number, color: string, id: number) {
     this.id = id;
     this.x = x;
     this.y = y;
@@ -33,18 +54,18 @@ class Particle {
   }
 
   //method to draw individual particle
-  draw(ctx, newColor = false) {
+  draw(ctx: CanvasRenderingContext2D, newColor = false) {
     if(ctx) {
       ctx.beginPath();
       ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2, false);
       // ctx.fillStyle = '#8C5523';
-      ctx.fillStyle = newColor ? newColor : this.color;
+      ctx.fillStyle = typeof newColor === 'string' ? newColor : this.color;
       ctx.fill();
     }
   }
 
   // Check particle position, check mouse position, move the particle, draw the particle
-  update(canvas, ctx, mouse) {
+  update(canvas: HTMLCanvasElement, ctx: CanvasRenderingContext2D, mouse: IMouse) {
     //check if particle is still within canvas
     if(this.x > canvas.width-11 || this.x < 11) {
       this.directionX = -this.directionX;
@@ -92,21 +113,21 @@ class Particle {
 }
 
 const BackgroundCanvas = () => {
-  const bgCanvas = useRef<HTMLCanvasElement>();
-  const [particles, setParticles] = useState([]);
-  const [ctx, setCtx] = useState(null);
+  const bgCanvas = useRef<HTMLCanvasElement | undefined>();
+  const [particles, setParticles] = useState<Particle[]>([]);
+  const [ctx, setCtx] = useState<CanvasRenderingContext2D|null>(null);
 
   const init = () => {
-    let canvas = bgCanvas.current;
+    let canvas:(HTMLCanvasElement | undefined) = bgCanvas.current;
 
     mouse = {
-      x: null,
-      y: null,
-      radius: (canvas?.height/120) * (canvas?.width/120),
-    };
+      x: 0,
+      y: 0,
+      radius: canvas ? (canvas?.height/120) * (canvas?.width/120) : 0,
+    } as IMouse;
 
-    let particlesArray = [];
-    let numberOfParticles = (canvas.height * canvas.width) / 7000;
+    let particlesArray = [] as Particle[];
+    let numberOfParticles = canvas ? (canvas.height * canvas.width) / 7000 : 0;
     for(let i = 0; i < numberOfParticles; i++) {
       let size = (Math.random() * 2) + 1;
       let x = (Math.random() * ((innerWidth - size * 2) - (size * 2)) + size * 2);
@@ -127,7 +148,7 @@ const BackgroundCanvas = () => {
     for(let a = 0; a < particles.length; a++) {
       for (let b = a; b < particles.length; b++) {
         let distance = (( particles[a].x - particles[b].x) * (particles[a].x - particles[b].x)) + ((particles[a].y - particles[b].y) * (particles[a].y - particles[b].y));
-        if (distance < (canvas.width/6) * (canvas.height/6)) {
+        if (ctx !== null && canvas && distance < (canvas.width/6) * (canvas.height/6)) {
           opacityValue = 1 - (distance/12000);
 
           // if(particles[a].x < canvas.width/2 || particles[b].x < canvas.width/2) {
@@ -147,8 +168,8 @@ const BackgroundCanvas = () => {
   }
 
   const animate = () => {
-    let canvas = bgCanvas.current;
-    const ctx = canvas.getContext("2d");
+    let canvas = bgCanvas.current as HTMLCanvasElement;
+    const ctx = canvas.getContext("2d") as CanvasRenderingContext2D;
 
     requestAnimationFrame(animate);
     ctx.clearRect(0, 0, innerWidth, innerHeight);
@@ -161,13 +182,13 @@ const BackgroundCanvas = () => {
   }
 
   useEffect(() => {
-    const canvas = bgCanvas.current;
+    const canvas = bgCanvas.current as HTMLCanvasElement;
     mouse.radius = ((canvas.height/90) * (canvas.height/90));
     setCtx(canvas.getContext("2d"));
   }, []);
 
   useEffect(() => {
-    const canvas = bgCanvas.current;
+    const canvas = bgCanvas.current as HTMLCanvasElement;
 
     if (typeof window !== "undefined") {
       canvas.width = window.innerWidth;
@@ -186,8 +207,8 @@ const BackgroundCanvas = () => {
       });
 
       window.addEventListener('mouseout', () => {
-        mouse.x = undefined;
-        mouse.y = undefined;
+        mouse.x = 0;
+        mouse.y = 0;
       })
     }
 

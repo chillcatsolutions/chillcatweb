@@ -1,15 +1,21 @@
-import { useEffect, useRef } from 'react';
+import { RefObject, useEffect, useRef } from 'react';
 import styled from 'styled-components';
 import type { NextPage } from 'next';
 import { gsap } from 'gsap';
 
 import BackgroundCanvas from '../components/BackgroundCanvas/BackgroundCanvas.component';
 
+interface IStart {
+  ref?: any;
+  onMouseEnter?: any;
+  onMouseLeave?: any;
+}
+
 const Container = styled.div`
   font-size:26px;
 `;
 
-const Start = styled.div`
+const Start = styled.div<IStart>`
   font-size: 26px;
   margin-left: 20px;
   margin-top: 20px;
@@ -49,23 +55,27 @@ const SecondaryTitle = styled.h2`
 
 const Home: NextPage = () => {
   const startRef = useRef<HTMLDivElement>();
-  const startTextRef = useRef<HTMLDivElement>();
-  const firstPipeRef = useRef<HTMLDivElement>();
-  const mainTitleRef = useRef<HTMLDivElement>();
-  const secondaryTitleRef = useRef<HTMLDivElement>();
-  const tl = useRef();
+  const startTextRef = useRef<any>();
+  const firstPipeRef = useRef<any>();
+  const mainTitleRef = useRef<any>();
+  const secondaryTitleRef = useRef<any>();
+  const tl = useRef<gsap.core.Timeline>();
 
-  const onEnter = ({ currentTarget }) => {
-    gsap.to(currentTarget, { backgroundColor: "#e77614" });
+  const onEnter = (e: MouseEvent) => {
+    gsap.to(e.currentTarget, { backgroundColor: "#e77614" });
   };
 
-  const onLeave = ({ currentTarget }) => {
-    gsap.to(currentTarget, { backgroundColor: "#28a92b" });
+  const onLeave = (e: MouseEvent) => {
+    gsap.to(e.currentTarget, { backgroundColor: "#28a92b" });
   };
 
   useEffect(() => {
     // gsap.timeline().clear()
-    if(startRef.current) {
+    if(startRef.current
+      && startTextRef.current
+      && firstPipeRef.current
+      && mainTitleRef.current
+      && secondaryTitleRef.current) {
       tl.current = gsap.timeline()
       .fromTo(startRef.current, {
         y: -200,
