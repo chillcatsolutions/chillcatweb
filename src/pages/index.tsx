@@ -30,7 +30,7 @@ const FirstPipe = styled.div`
   width: 500px;
   position: absolute;
   top: 77px;
-  left: 128px;
+  left: 120px;
 `;
 
 const MainTitle = styled.h2`
