@@ -3,6 +3,8 @@ import styled from 'styled-components';
 import type { NextPage } from 'next';
 import { gsap } from 'gsap';
 
+import BackgroundCanvas from '../components/BackgroundCanvas/BackgroundCanvas.component';
+
 const Container = styled.div`
   font-size:26px;
 `;
@@ -33,14 +35,16 @@ const FirstPipe = styled.div`
 
 const MainTitle = styled.h2`
   position: absolute;
-  top: 1px;
+  top: 25px;
   left: 140px;
+  color: #aaaaaa;
 `;
 
 const SecondaryTitle = styled.h2`
   position: absolute;
-  top: 100px;
+  top: 150px;
   left: 140px;
+  color: #aaaaaa;
 `;
 
 const Home: NextPage = () => {
@@ -54,7 +58,7 @@ const Home: NextPage = () => {
   const onEnter = ({ currentTarget }) => {
     gsap.to(currentTarget, { backgroundColor: "#e77614" });
   };
-  
+
   const onLeave = ({ currentTarget }) => {
     gsap.to(currentTarget, { backgroundColor: "#28a92b" });
   };
@@ -134,13 +138,13 @@ const Home: NextPage = () => {
         stagger: 0.2,
       })
       .to(secondaryTitleRef.current, {
-        y: -23,
+        y: 0,
         rotation: '-=20',
         duration: .5,
         stagger: 0.2, 
       })
       .to(secondaryTitleRef.current, {
-        y: -46,
+        y: -60,
         rotation: '+=20',
         duration: .5,
         stagger: 0.2, 
@@ -155,6 +159,7 @@ const Home: NextPage = () => {
 
   return (
     <Container>
+      <BackgroundCanvas />
       <Start ref={startRef} onMouseEnter={onEnter} onMouseLeave={onLeave}>
         <span ref={startTextRef}>Start</span>
       </Start>
