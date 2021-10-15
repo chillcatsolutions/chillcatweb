@@ -82,31 +82,31 @@ const Home: NextPage = () => {
       tl.current = gsap.timeline()
       .fromTo(startRef.current, {
         y: -200,
-        duration: 2.5,
+        duration: 1,
         stagger: 0.2, 
       }, {
         y: -100,
-        duration: 2.5,
+        duration: 1,
         stagger: 0.2,
       })
       .to(startRef.current, {
         rotate: '+=20',
-        duration: 1,
+        duration: 0.4,
         stagger: 0.2, 
       })
       .to(startRef.current, {
         rotate: '-=40',
-        duration: 1,
+        duration: 0.4,
         stagger: 0.2, 
       })
       .to(startRef.current, {
         rotate: '+=20',
-        duration: 1.5,
+        duration: 0.5,
         stagger: 0.2, 
       })
       .to(startRef.current, {
         y: -90,
-        duration: .8,
+        duration: .5,
         stagger: 0.2, 
       })
       .to(startRef.current, {

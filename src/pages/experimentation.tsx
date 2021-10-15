@@ -52,10 +52,16 @@ const SecondaryTitle = styled.h2`
 `;
 
 const Experimentation: NextPage = () => {
+	useEffect(() => {
+		if(window){
+			window.addEventListener('click', event => {
+				console.log(event.x, event.y);
+			});
+		}
+	})
   return (
     <Container>
-      Imagen
-			<Image src="/logoChillCatSolutionsv2.png" alt="logo" height="100px" width="80px" />
+			<Image src="/logoChillCatSolutionsv2.png" alt="logo" height="300px" width="240px" />
     </Container>
   )
 }

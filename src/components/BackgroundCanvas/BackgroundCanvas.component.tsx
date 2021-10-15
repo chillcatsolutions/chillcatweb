@@ -142,12 +142,68 @@ const BackgroundCanvas = () => {
       particlesArray.push(new Particle(x, y, directionX, directionY, size, color, i, true));
     }
 
-    particlesArray.push(new Particle(500, 500, 0, 0, 10, getRandomColor(), 999990, false));
-    particlesArray.push(new Particle(550, 500, 0, 0, 10, getRandomColor(), 999991, false));
-    particlesArray.push(new Particle(500, 550, 0, 0, 10, getRandomColor(), 999992, false));
-    particlesArray.push(new Particle(550, 550, 0, 0, 10, getRandomColor(), 999993, false));
+    //particlesArray.push(new Particle(500, 500, 0, 0, 10, getRandomColor(), 999990, false));
+    //particlesArray.push(new Particle(550, 500, 0, 0, 10, getRandomColor(), 999991, false));
+    //particlesArray.push(new Particle(500, 550, 0, 0, 10, getRandomColor(), 999992, false));
+    //particlesArray.push(new Particle(550, 550, 0, 0, 10, getRandomColor(), 999993, false));
+
+    //Cat face particles
+    particlesArray.push(new Particle(319, 191, 0, 0, 5, getRandomColor(), 989990, false));
+    particlesArray.push(new Particle(240, 297, 0, 0, 5, getRandomColor(), 989991, false));
+    particlesArray.push(new Particle(263, 329, 0, 0, 5, getRandomColor(), 989992, false));
+    particlesArray.push(new Particle(238, 411, 0, 0, 5, getRandomColor(), 989993, false));
+    particlesArray.push(new Particle(94, 473, 0, 0, 5, getRandomColor(), 989994, false));
+    particlesArray.push(new Particle(94, 301, 0, 0, 5, getRandomColor(), 989995, false));
+
+    // cat ear
+    particlesArray.push(new Particle(288, 216, 0, 0, 5, getRandomColor(), 989996, false));
+    particlesArray.push(new Particle(196, 267, 0, 0, 5, getRandomColor(), 989997, false));
+    particlesArray.push(new Particle(231, 287, 0, 0, 5, getRandomColor(), 989998, false));
+
+    //cat eye
+    particlesArray.push(new Particle(226, 313, 0, 0, 5, getRandomColor(), 989999, false));
+    particlesArray.push(new Particle(156, 337, 0, 0, 5, getRandomColor(), 990000, false));
+    particlesArray.push(new Particle(156, 346, 0, 0, 5, getRandomColor(), 990001, false));
+    particlesArray.push(new Particle(166, 349, 0, 0, 5, getRandomColor(), 990002, false));
+    
+    //cat nose
+    particlesArray.push(new Particle(110, 377, 0, 0, 5, getRandomColor(), 990003, false));
+    particlesArray.push(new Particle(124, 389, 0, 0, 5, getRandomColor(), 990004, false));
+    particlesArray.push(new Particle(122, 399, 0, 0, 5, getRandomColor(), 990005, false));
+    particlesArray.push(new Particle(101, 408, 0, 0, 5, getRandomColor(), 990006, false));
+
+    //cat upper lips
+    particlesArray.push(new Particle(95, 416, 0, 0, 5, getRandomColor(), 990007, false));
+    particlesArray.push(new Particle(100, 426, 0, 0, 5, getRandomColor(), 990008, false));
+    particlesArray.push(new Particle(137, 443, 0, 0, 5, getRandomColor(), 990009, false));
+    particlesArray.push(new Particle(164, 427, 0, 0, 5, getRandomColor(), 990010, false));
+
+    //cat lower lips
+    particlesArray.push(new Particle(95, 447, 0, 0, 5, getRandomColor(), 990011, false));
+    particlesArray.push(new Particle(110, 444, 0, 0, 5, getRandomColor(), 990012, false));
+
 
     setParticles(particlesArray);
+  }
+
+  interface IDrawByPointProps {
+    ctx: CanvasRenderingContext2D;
+    firstParticleId: number;
+    lastParticleId: number;
+    circle: boolean;
+  }
+
+  const drawByPoints = ({ctx, firstParticleId, lastParticleId, circle}: IDrawByPointProps) => {
+    const faceParticles = particles.filter(particle => particle.id >= firstParticleId && particle.id <= lastParticleId);
+    ctx.strokeStyle = 'rgba(255, 255, 255, 0.3)';
+    for (let i = 0; i < faceParticles.length; i++) {
+      if(!circle && i+1 === faceParticles.length) continue;
+      const nextIndex = i+1 === faceParticles.length ? 0 : i+1;
+      ctx.beginPath();
+      ctx.moveTo(faceParticles[i].x, faceParticles[i].y);
+      ctx.lineTo(faceParticles[nextIndex].x, faceParticles[nextIndex].y);
+      ctx.stroke();
+    }
   }
 
   const connect = () => {
@@ -155,19 +211,15 @@ const BackgroundCanvas = () => {
     let opacityValue = 1;
     for(let a = 0; a < particles.length; a++) {
       for (let b = a; b < particles.length; b++) {
+        if(!particles[a].canMove && !particles[b].canMove){
+          continue;
+        }
         let distance = (( particles[a].x - particles[b].x) * (particles[a].x - particles[b].x)) + ((particles[a].y - particles[b].y) * (particles[a].y - particles[b].y));
-        if (ctx !== null && canvas && distance < (canvas.width/6) * (canvas.height/6)) {
+        let distanceFactor = 6;
+        if (ctx !== null && canvas && distance < (canvas.width/distanceFactor) * (canvas.height/distanceFactor)) {
+          
           opacityValue = 1 - (distance/12000);
-
-          // if(particles[a].x < canvas.width/2 || particles[b].x < canvas.width/2) {
-          //   ctx.strokeStyle = 'rgba(24, 112, 47, ' + opacityValue + ')';
-          // }else{
-            if(!particles[b].canMove){
-              ctx.strokeStyle = 'rgba(255, 255, 255, ' + opacityValue + ')';              
-            } else {
-              ctx.strokeStyle = 'rgba(140, 85, 31, ' + opacityValue + ')';
-            }
-          // }
+          ctx.strokeStyle = 'rgba(140, 85, 31, ' + opacityValue + ')';
 
           ctx.lineWidth = 1;
           ctx.beginPath();
@@ -176,6 +228,56 @@ const BackgroundCanvas = () => {
           ctx.stroke();
         }
       }
+    }
+
+    if (ctx !== null) {
+      // connect the cat face
+      drawByPoints({
+        ctx: ctx,
+        firstParticleId: 989990,
+        lastParticleId: 989995,
+        circle: true, 
+      });
+
+      //connect the cat ear
+      drawByPoints({
+        ctx: ctx,
+        firstParticleId: 989996,
+        lastParticleId: 989998,
+        circle: true, 
+      });
+
+      //connect the cat eye
+      drawByPoints({
+        ctx: ctx,
+        firstParticleId: 989999,
+        lastParticleId: 990002,
+        circle: false, 
+      });
+
+      //connect the cat nose
+      drawByPoints({
+        ctx: ctx,
+        firstParticleId: 990003,
+        lastParticleId: 990006,
+        circle: false, 
+      });
+
+      //connect the cat upper lips
+      drawByPoints({
+        ctx: ctx,
+        firstParticleId: 990007,
+        lastParticleId: 990010,
+        circle: false, 
+      });
+
+      //connect the cat lower lips
+      drawByPoints({
+        ctx: ctx,
+        firstParticleId: 990011,
+        lastParticleId: 990012,
+        circle: false, 
+      });
     }
   }
 
