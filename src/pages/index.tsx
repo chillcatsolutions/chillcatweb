@@ -1,4 +1,5 @@
 import { RefObject, useEffect, useRef } from 'react';
+import Image from 'next/image';
 import styled from 'styled-components';
 import type { NextPage } from 'next';
 import { gsap } from 'gsap';
@@ -19,7 +20,8 @@ const Start = styled.div<IStart>`
   font-size: 26px;
   margin-left: 20px;
   margin-top: 20px;
-  background-color: green;
+  background-color: rgba(30,30,30,0.66);
+  border-radius: 15px;
   width: 100px;
   height: 100px;
 
@@ -31,12 +33,13 @@ const Start = styled.div<IStart>`
 `;
 
 const FirstPipe = styled.div`
-  background-color: green;
-  height: 10px;
+  background-color: rgba(30,169,30,0.66);
+  height: 4px;
   width: 500px;
   position: absolute;
   top: 77px;
   left: 120px;
+  border-radius: 10px;
 `;
 
 const MainTitle = styled.h2`
@@ -48,7 +51,7 @@ const MainTitle = styled.h2`
 
 const SecondaryTitle = styled.h2`
   position: absolute;
-  top: 150px;
+  top: 142px;
   left: 140px;
   color: #aaaaaa;
 `;
@@ -62,11 +65,11 @@ const Home: NextPage = () => {
   const tl = useRef<gsap.core.Timeline>();
 
   const onEnter = (e: MouseEvent) => {
-    gsap.to(e.currentTarget, { backgroundColor: "#e77614" });
+    gsap.to(e.currentTarget, { backgroundColor: "rgb(50, 6, 3, 0.8)" });
   };
 
   const onLeave = (e: MouseEvent) => {
-    gsap.to(e.currentTarget, { backgroundColor: "#28a92b" });
+    gsap.to(e.currentTarget, { backgroundColor: "rgba(30,30,30,0.66)" });
   };
 
   useEffect(() => {
@@ -171,7 +174,9 @@ const Home: NextPage = () => {
     <Container>
       <BackgroundCanvas />
       <Start ref={startRef} onMouseEnter={onEnter} onMouseLeave={onLeave}>
-        <span ref={startTextRef}>Start</span>
+        <span ref={startTextRef}>
+  			  <Image src="/logoChillCatSolutionsv2.png" alt="logo" height="100px" width="80px" />
+        </span>
       </Start>
       <FirstPipe ref={firstPipeRef} />
       <MainTitle ref={mainTitleRef}>ChillCat</MainTitle>
