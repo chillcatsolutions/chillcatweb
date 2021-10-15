@@ -1,5 +1,4 @@
-import { RefObject, useEffect, useRef } from 'react';
-import Image from 'next/image';
+import { useEffect, useRef } from 'react';
 import styled from 'styled-components';
 import type { NextPage } from 'next';
 import { gsap } from 'gsap';
@@ -175,7 +174,7 @@ const Home: NextPage = () => {
       <BackgroundCanvas />
       <Start ref={startRef} onMouseEnter={onEnter} onMouseLeave={onLeave}>
         <span ref={startTextRef}>
-  			  <Image src="/logoChillCatSolutionsv2.png" alt="logo" height="100px" width="80px" />
+  			  <img src="/logoChillCatSolutionsv2.png" alt="logo" height="100px" width="80px" />
         </span>
       </Start>
       <FirstPipe ref={firstPipeRef} />
