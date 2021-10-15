@@ -37,13 +37,14 @@ const getRandomColor = () => {
 // Create particle
 class Particle {
   id: number;
+  canMove: boolean;
   x: number;
   y: number;
   directionX: number;
   directionY: number;
   size: number;
   color: string;
-  constructor(x: number, y: number, directionX: number, directionY: number, size: number, color: string, id: number) {
+  constructor(x: number, y: number, directionX: number, directionY: number, size: number, color: string, id: number, canMove: boolean) {
     this.id = id;
     this.x = x;
     this.y = y;
@@ -51,6 +52,7 @@ class Particle {
     this.directionY = directionY;
     this.size = size;
     this.color = color;
+    this.canMove = canMove;
   }
 
   //method to draw individual particle
@@ -137,8 +139,14 @@ const BackgroundCanvas = () => {
       // let color = '#8C5523';
       let color = getRandomColor();
   
-      particlesArray.push(new Particle(x, y, directionX, directionY, size, color, i));
+      particlesArray.push(new Particle(x, y, directionX, directionY, size, color, i, true));
     }
+
+    particlesArray.push(new Particle(500, 500, 0, 0, 10, getRandomColor(), 999990, false));
+    particlesArray.push(new Particle(550, 500, 0, 0, 10, getRandomColor(), 999991, false));
+    particlesArray.push(new Particle(500, 550, 0, 0, 10, getRandomColor(), 999992, false));
+    particlesArray.push(new Particle(550, 550, 0, 0, 10, getRandomColor(), 999993, false));
+
     setParticles(particlesArray);
   }
 
@@ -154,7 +162,11 @@ const BackgroundCanvas = () => {
           // if(particles[a].x < canvas.width/2 || particles[b].x < canvas.width/2) {
           //   ctx.strokeStyle = 'rgba(24, 112, 47, ' + opacityValue + ')';
           // }else{
-            ctx.strokeStyle = 'rgba(140, 85, 31, ' + opacityValue + ')';
+            if(!particles[b].canMove){
+              ctx.strokeStyle = 'rgba(255, 255, 255, ' + opacityValue + ')';              
+            } else {
+              ctx.strokeStyle = 'rgba(140, 85, 31, ' + opacityValue + ')';
+            }
           // }
 
           ctx.lineWidth = 1;
@@ -175,7 +187,9 @@ const BackgroundCanvas = () => {
     ctx.clearRect(0, 0, innerWidth, innerHeight);
 
     for (let i = 0; i < particles.length; i++) {
-      particles[i].update(canvas, ctx, mouse);
+      if(particles[i].canMove){
+        particles[i].update(canvas, ctx, mouse);
+      }
     }
   
     connect();
