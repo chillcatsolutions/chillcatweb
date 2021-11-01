@@ -24,7 +24,7 @@ const FooterCanvas = () => {
       
       requestAnimationFrame(animate);
       canvas.width = canvas.width;
-      _ctx.fillStyle = "rgba(100, 100, 190, 1)";
+      _ctx.fillStyle = "rgba(56,81,172, 1)";
       
       var randomLeft = Math.abs(Math.pow( Math.sin(delta/1000), 2 )) * 100;
       var randomRight = Math.abs(Math.pow( Math.sin((delta/1000) + 10), 2 )) * 100;

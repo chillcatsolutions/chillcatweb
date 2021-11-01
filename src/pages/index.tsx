@@ -64,11 +64,13 @@ const HeroContainer = styled.div`
 `;
 
 const IntroContainer = styled(HeroContainer)`
-  background-color: blue;
+  background-color: #1c1c1c;
+  color: #d9d9d9;
+  padding: 50px;
 `;
 
 const FooterContainer = styled(HeroContainer)`
-  background-color: blue;
+  background-color: #1c1c1c;
 `; 
 
 const Home: NextPage = () => {
