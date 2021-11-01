@@ -1,9 +1,10 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import styled from 'styled-components';
 import type { NextPage } from 'next';
 import { gsap } from 'gsap';
 
 import BackgroundCanvas from '../components/BackgroundCanvas/BackgroundCanvas.component';
+import FooterCanvas from '../components/FooterCanvas/FooterCanvas.component';
 
 interface IStart {
   ref?: any;
@@ -13,6 +14,7 @@ interface IStart {
 
 const Container = styled.div`
   font-size:26px;
+  overflow: auto;
 `;
 
 const Start = styled.div<IStart>`
@@ -54,6 +56,20 @@ const SecondaryTitle = styled.h2`
   left: 140px;
   color: #aaaaaa;
 `;
+
+const HeroContainer = styled.div`
+  height: 100vh;
+  width: 100%;
+  overflow: auto;
+`;
+
+const IntroContainer = styled(HeroContainer)`
+  background-color: blue;
+`;
+
+const FooterContainer = styled(HeroContainer)`
+  background-color: blue;
+`; 
 
 const Home: NextPage = () => {
   const startRef = useRef<HTMLDivElement>();
@@ -169,17 +185,39 @@ const Home: NextPage = () => {
     }
   }, []);
 
-  return (
-    <Container>
+  const Hero = () => (
+    <HeroContainer>
       <BackgroundCanvas />
       <Start ref={startRef} onMouseEnter={onEnter} onMouseLeave={onLeave}>
         <span ref={startTextRef}>
-  			  <img src="/logoChillCatSolutionsv2.png" alt="logo" height="100px" width="80px" />
+          <img src="/logoChillCatSolutionsv2.png" alt="logo" height="100px" width="80px" />
         </span>
       </Start>
       <FirstPipe ref={firstPipeRef} />
       <MainTitle ref={mainTitleRef}>ChillCat</MainTitle>
       <SecondaryTitle ref={secondaryTitleRef}>Solutions</SecondaryTitle>
+    </HeroContainer>  
+  );
+
+  const Intro = () => (
+    <IntroContainer>
+      Welcome to ChillCat Solutions
+    </IntroContainer>
+  );
+
+  const Footer = () => {
+    return (
+      <FooterContainer>
+        <FooterCanvas />
+      </FooterContainer>
+    );
+  }
+
+  return (
+    <Container>
+      <Hero />
+      <Intro />
+      <Footer />
     </Container>
   )
 }
