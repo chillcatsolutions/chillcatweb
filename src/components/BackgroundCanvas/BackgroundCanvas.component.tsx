@@ -142,45 +142,40 @@ const BackgroundCanvas = () => {
       particlesArray.push(new Particle(x, y, directionX, directionY, size, color, i, true));
     }
 
-    //particlesArray.push(new Particle(500, 500, 0, 0, 10, getRandomColor(), 999990, false));
-    //particlesArray.push(new Particle(550, 500, 0, 0, 10, getRandomColor(), 999991, false));
-    //particlesArray.push(new Particle(500, 550, 0, 0, 10, getRandomColor(), 999992, false));
-    //particlesArray.push(new Particle(550, 550, 0, 0, 10, getRandomColor(), 999993, false));
-
     //Cat face particles
-    particlesArray.push(new Particle(319, 191, 0, 0, 5, getRandomColor(), 989990, false));
-    particlesArray.push(new Particle(240, 297, 0, 0, 5, getRandomColor(), 989991, false));
-    particlesArray.push(new Particle(263, 329, 0, 0, 5, getRandomColor(), 989992, false));
-    particlesArray.push(new Particle(238, 411, 0, 0, 5, getRandomColor(), 989993, false));
-    particlesArray.push(new Particle(94, 473, 0, 0, 5, getRandomColor(), 989994, false));
-    particlesArray.push(new Particle(94, 301, 0, 0, 5, getRandomColor(), 989995, false));
+    particlesArray.push(new Particle(319, 191, 0, 0, 2, getRandomColor(), 989990, false));
+    particlesArray.push(new Particle(240, 297, 0, 0, 2, getRandomColor(), 989991, false));
+    particlesArray.push(new Particle(263, 329, 0, 0, 2, getRandomColor(), 989992, false));
+    particlesArray.push(new Particle(238, 411, 0, 0, 2, getRandomColor(), 989993, false));
+    particlesArray.push(new Particle(94, 473, 0, 0, 2, getRandomColor(), 989994, false));
+    particlesArray.push(new Particle(94, 301, 0, 0, 2, getRandomColor(), 989995, false));
 
     // cat ear
-    particlesArray.push(new Particle(288, 216, 0, 0, 5, getRandomColor(), 989996, false));
-    particlesArray.push(new Particle(196, 267, 0, 0, 5, getRandomColor(), 989997, false));
-    particlesArray.push(new Particle(231, 287, 0, 0, 5, getRandomColor(), 989998, false));
+    particlesArray.push(new Particle(288, 216, 0, 0, 2, getRandomColor(), 989996, false));
+    particlesArray.push(new Particle(196, 267, 0, 0, 2, getRandomColor(), 989997, false));
+    particlesArray.push(new Particle(231, 287, 0, 0, 2, getRandomColor(), 989998, false));
 
     //cat eye
-    particlesArray.push(new Particle(226, 313, 0, 0, 5, getRandomColor(), 989999, false));
-    particlesArray.push(new Particle(156, 337, 0, 0, 5, getRandomColor(), 990000, false));
-    particlesArray.push(new Particle(156, 346, 0, 0, 5, getRandomColor(), 990001, false));
-    particlesArray.push(new Particle(166, 349, 0, 0, 5, getRandomColor(), 990002, false));
+    particlesArray.push(new Particle(226, 313, 0, 0, 2, getRandomColor(), 989999, false));
+    particlesArray.push(new Particle(156, 337, 0, 0, 2, getRandomColor(), 990000, false));
+    particlesArray.push(new Particle(156, 346, 0, 0, 2, getRandomColor(), 990001, false));
+    particlesArray.push(new Particle(166, 349, 0, 0, 2, getRandomColor(), 990002, false));
     
     //cat nose
-    particlesArray.push(new Particle(110, 377, 0, 0, 5, getRandomColor(), 990003, false));
-    particlesArray.push(new Particle(124, 389, 0, 0, 5, getRandomColor(), 990004, false));
-    particlesArray.push(new Particle(122, 399, 0, 0, 5, getRandomColor(), 990005, false));
-    particlesArray.push(new Particle(101, 408, 0, 0, 5, getRandomColor(), 990006, false));
+    particlesArray.push(new Particle(110, 377, 0, 0, 2, getRandomColor(), 990003, false));
+    particlesArray.push(new Particle(124, 389, 0, 0, 2, getRandomColor(), 990004, false));
+    particlesArray.push(new Particle(122, 399, 0, 0, 2, getRandomColor(), 990005, false));
+    particlesArray.push(new Particle(101, 408, 0, 0, 2, getRandomColor(), 990006, false));
 
     //cat upper lips
-    particlesArray.push(new Particle(95, 416, 0, 0, 5, getRandomColor(), 990007, false));
-    particlesArray.push(new Particle(100, 426, 0, 0, 5, getRandomColor(), 990008, false));
-    particlesArray.push(new Particle(137, 443, 0, 0, 5, getRandomColor(), 990009, false));
-    particlesArray.push(new Particle(164, 427, 0, 0, 5, getRandomColor(), 990010, false));
+    particlesArray.push(new Particle(95, 416, 0, 0, 2, getRandomColor(), 990007, false));
+    particlesArray.push(new Particle(100, 426, 0, 0, 2, getRandomColor(), 990008, false));
+    particlesArray.push(new Particle(137, 443, 0, 0, 2, getRandomColor(), 990009, false));
+    particlesArray.push(new Particle(164, 427, 0, 0, 2, getRandomColor(), 990010, false));
 
     //cat lower lips
-    particlesArray.push(new Particle(95, 447, 0, 0, 5, getRandomColor(), 990011, false));
-    particlesArray.push(new Particle(110, 444, 0, 0, 5, getRandomColor(), 990012, false));
+    particlesArray.push(new Particle(95, 447, 0, 0, 2, getRandomColor(), 990011, false));
+    particlesArray.push(new Particle(110, 444, 0, 0, 2, getRandomColor(), 990012, false));
 
 
     setParticles(particlesArray);
@@ -195,7 +190,7 @@ const BackgroundCanvas = () => {
 
   const drawByPoints = ({ctx, firstParticleId, lastParticleId, circle}: IDrawByPointProps) => {
     const faceParticles = particles.filter(particle => particle.id >= firstParticleId && particle.id <= lastParticleId);
-    ctx.strokeStyle = 'rgba(255, 255, 255, 0.3)';
+    ctx.strokeStyle = 'rgba(255, 255, 255, 0.6)';
     for (let i = 0; i < faceParticles.length; i++) {
       if(!circle && i+1 === faceParticles.length) continue;
       const nextIndex = i+1 === faceParticles.length ? 0 : i+1;
@@ -282,21 +277,26 @@ const BackgroundCanvas = () => {
   }
 
   const animate = () => {
-    let canvas = bgCanvas.current as HTMLCanvasElement;
-    const ctx = canvas.getContext("2d") as CanvasRenderingContext2D;
+    if(bgCanvas && bgCanvas.current && bgCanvas.current.getContext) {
 
-    requestAnimationFrame(animate);
-    ctx.clearRect(0, 0, innerWidth, innerHeight);
-
-    for (let i = 0; i < particles.length; i++) {
-      if(particles[i].canMove){
-        particles[i].update(canvas, ctx, mouse);
+      let canvas = bgCanvas.current as HTMLCanvasElement;
+      const _ctx = canvas.getContext("2d") as CanvasRenderingContext2D;
+      
+      requestAnimationFrame(animate);
+      _ctx.clearRect(0, 0, innerWidth, innerHeight);
+      
+      for (let i = 0; i < particles.length; i++) {
+        if(particles[i].canMove){
+          particles[i].update(canvas, _ctx, mouse);
+        } else {
+          particles[i].draw(_ctx, false);
+        }
       }
+      
+      connect();
     }
-  
-    connect();
   }
-
+    
   useEffect(() => {
     const canvas = bgCanvas.current as HTMLCanvasElement;
     mouse.radius = ((canvas.height/90) * (canvas.height/90));
