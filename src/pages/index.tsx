@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import styled from 'styled-components';
 import type { NextPage } from 'next';
+import Typewriter from 'typewriter-effect/dist/core';
 import { gsap } from 'gsap';
 
 import BackgroundCanvas from '../components/BackgroundCanvas/BackgroundCanvas.component';
@@ -63,6 +64,26 @@ const HeroContainer = styled.div`
   overflow: auto;
 `;
 
+const ContactContainer = styled.div`
+  position: absolute;
+  top: 50%;
+  width: 655px;
+  /* background-color: #ff00007a; */
+  font-family: monospace;
+  color: #cdcdcd;
+  font-size: 28px;
+  left: Calc(50% - 327px);
+`;
+
+const CopyButton = styled.button`
+  background-color: red;
+  width: 100px;
+  height: 30px;
+  font-family: monospace;
+  color: white;
+  float: right;
+`;
+
 const IntroContainer = styled(HeroContainer)`
   background-color: #1c1c1c;
   color: #d9d9d9;
@@ -78,6 +99,7 @@ const Home: NextPage = () => {
   const startTextRef = useRef<any>();
   const firstPipeRef = useRef<any>();
   const mainTitleRef = useRef<any>();
+  const copyButtonRef = useRef<any>();
   const secondaryTitleRef = useRef<any>();
   const tl = useRef<gsap.core.Timeline>();
 
@@ -95,7 +117,8 @@ const Home: NextPage = () => {
       && startTextRef.current
       && firstPipeRef.current
       && mainTitleRef.current
-      && secondaryTitleRef.current) {
+      && secondaryTitleRef.current
+      && copyButtonRef.current) {
       tl.current = gsap.timeline()
       .fromTo(startRef.current, {
         y: -200,
@@ -167,6 +190,15 @@ const Home: NextPage = () => {
         duration: .8,
         stagger: 0.2,
       })
+      .fromTo(copyButtonRef.current, {
+        opacity: 0,
+        duration: .5,
+        stagger: 0.2, 
+      }, {
+        opacity: 1,
+        duration: .8,
+        stagger: 0.2,
+      })
       .to(secondaryTitleRef.current, {
         y: 0,
         rotation: '-=20',
@@ -184,6 +216,15 @@ const Home: NextPage = () => {
         duration: .3,
         stagger: 0.2, 
       });
+      const typewriter = new Typewriter('#typewriter', {
+        loop: false,
+        delay: 60,
+      });
+
+      typewriter
+      .pauseFor(4500)
+      .typeString('Contact us at chillcatsolutions@gmail.com')
+      .start();
     }
   }, []);
 
@@ -199,6 +240,23 @@ const Home: NextPage = () => {
       <MainTitle ref={mainTitleRef}>ChillCat</MainTitle>
       <SecondaryTitle ref={secondaryTitleRef}>Solutions</SecondaryTitle>
     </HeroContainer>  
+  );
+
+  const copyEmailHandler = () => {
+    if (navigator && navigator.clipboard) {
+      navigator.clipboard.writeText('chlllcatsolutions@gmail.com').then(function() {
+        console.log('Copying to clipboard was successful!');
+      }, function(err) {
+        console.error('Async: Could not copy text: chillcatsolutions@gmail.com', err);
+      });
+    }
+  };
+
+  const ContactText = () => (
+    <ContactContainer>
+      <span id="typewriter">Welcome, you can contact us through: chillcatsolutions@gmail.com</span>
+      <CopyButton ref={copyButtonRef} type="button" onClick={copyEmailHandler}>Copy Email</CopyButton>
+    </ContactContainer>
   );
 
   const Intro = () => (
@@ -218,6 +276,7 @@ const Home: NextPage = () => {
   return (
     <Container>
       <Hero />
+      <ContactText />
       <Intro />
       <Footer />
     </Container>
