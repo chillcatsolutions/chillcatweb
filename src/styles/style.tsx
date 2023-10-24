@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import HeaderContainer from "../components/Header/HeaderContainer";
 
 
 interface IStart {
@@ -12,7 +13,22 @@ export const Container = styled.div`
   overflow: auto;
 `;
 
-export const HeaderContainer = styled.header`
+export const HeaderWrapper = styled.div`
+  position: absolute;
+  z-index: 1;
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+  flex-wrap: nowrap;
+  flex-direction: row;
+  align-items: center;
+`;
+
+export const LogoWrapper = styled.div`
+  width: 47%;
+`;
+
+export const HeaderContainerStyled = styled(HeaderContainer)`
   display: flex;
   justify-content: space-between;
   align-items: center;
