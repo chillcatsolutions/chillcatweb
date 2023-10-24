@@ -6,7 +6,7 @@ interface IStyledCanvas {
 }
 
 const StyledCanvas = styled.canvas<IStyledCanvas>`
-  position: absolute;
+  position: relative;
   top: 0; left: 0;
   width: 100%;
   height: 100%;
@@ -277,9 +277,8 @@ const BackgroundCanvas = () => {
   }
 
   const animate = () => {
-    if(bgCanvas && bgCanvas.current && bgCanvas.current.getContext) {
-
-      let canvas = bgCanvas.current as HTMLCanvasElement;
+    if (bgCanvas && bgCanvas.current && typeof bgCanvas.current.getContext === 'function') {
+      const canvas = bgCanvas.current as HTMLCanvasElement;
       const _ctx = canvas.getContext("2d") as CanvasRenderingContext2D;
       
       requestAnimationFrame(animate);
