@@ -1,5 +1,6 @@
 import React from 'react'
 import { gsap } from 'gsap';
+import LinkRenderer from './LinkRenderer';
 
 import {
   Start,
@@ -14,6 +15,13 @@ import { HeroReferencesType } from '../../utils/animationLogo';
 type HeaderContainerProps = {
   references: HeroReferencesType
 }
+type Link = {
+  name: string;
+  url: string;
+};
+export type LinkRendererProps = {
+  render: Link[];
+};
 
 function HeaderContainer({ references }: HeaderContainerProps) {
 
@@ -21,10 +29,16 @@ function HeaderContainer({ references }: HeaderContainerProps) {
 
   const onEnter = (e: MouseEvent) => {
     gsap.to(e.currentTarget, { backgroundColor: "rgb(50, 6, 3, 0.8)" });
-  };      
+  }; 
+       
   const onLeave = (e: MouseEvent) => {
     gsap.to(e.currentTarget, { backgroundColor: "rgba(30,30,30,0.66)" });
   };
+
+  const links: Link[] = [
+    {name:"home", url: "/"},
+    {name:"other", url: "https//:www.google.com"}
+  ];
 
   return (
     <HeaderWrapper>
@@ -39,9 +53,7 @@ function HeaderContainer({ references }: HeaderContainerProps) {
         <SecondaryTitle ref={secondaryTitleRef}>Solutions</SecondaryTitle>
       </LogoWrapper>
       <nav>
-        <ul>
-          <li> <a href="#">Inicio</a> </li>
-        </ul>
+        <LinkRenderer render={links}/>
       </nav>
     </HeaderWrapper>
   )
