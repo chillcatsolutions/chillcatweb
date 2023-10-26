@@ -1,6 +1,7 @@
 import React from 'react'
 import { gsap } from 'gsap';
 import LinkRenderer from './LinkRenderer';
+import styled from 'styled-components';
 
 import {
   Start,
@@ -30,15 +31,23 @@ function HeaderContainer({ references }: HeaderContainerProps) {
   const onEnter = (e: MouseEvent) => {
     gsap.to(e.currentTarget, { backgroundColor: "rgb(50, 6, 3, 0.8)" });
   }; 
-       
+
   const onLeave = (e: MouseEvent) => {
     gsap.to(e.currentTarget, { backgroundColor: "rgba(30,30,30,0.66)" });
   };
 
   const links: Link[] = [
     {name:"home", url: "/"},
-    {name:"other", url: "https//:www.google.com"}
+    {name:"other", url: "https://www.google.com"},
+    {name:"otherExample", url: "https://www.google.com"},
+    {name:"Support", url: "https://www.google.com"},
   ];
+
+  const NavWrapper = styled.nav`
+    width:80%;
+    max-width: 700px;
+    padding:0 30px;
+  `;
 
   return (
     <HeaderWrapper>
@@ -52,9 +61,9 @@ function HeaderContainer({ references }: HeaderContainerProps) {
         <MainTitle ref={mainTitleRef}>ChillCat</MainTitle>
         <SecondaryTitle ref={secondaryTitleRef}>Solutions</SecondaryTitle>
       </LogoWrapper>
-      <nav>
+      <NavWrapper>
         <LinkRenderer render={links}/>
-      </nav>
+      </NavWrapper>
     </HeaderWrapper>
   )
 }

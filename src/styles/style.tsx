@@ -11,6 +11,9 @@ interface IStart {
 export const Container = styled.div`
   font-size: 26px;
   overflow: auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
 `;
 
 export const HeaderWrapper = styled.div`
@@ -18,7 +21,7 @@ export const HeaderWrapper = styled.div`
   z-index: 1;
   width: 100%;
   display: flex;
-  justify-content: flex-start;
+  justify-content: space-between;
   flex-wrap: nowrap;
   flex-direction: row;
   align-items: center;
@@ -26,6 +29,7 @@ export const HeaderWrapper = styled.div`
 
 export const LogoWrapper = styled.div`
   width: 47%;
+  cursor:pointer;
 `;
 
 export const HeaderContainerStyled = styled(HeaderContainer)`
@@ -44,6 +48,7 @@ export const Start = styled.div<IStart>`
   border-radius: 15px;
   width: 100px;
   height: 100px;
+  user-select:none;
 
   span {
     position: relative;
@@ -67,6 +72,7 @@ export const MainTitle = styled.h2`
   top: 25px;
   left: 140px;
   color: #aaaaaa;
+  user-select: none;
 `;
 
 export const SecondaryTitle = styled.h2`
@@ -74,6 +80,7 @@ export const SecondaryTitle = styled.h2`
   top: 142px;
   left: 140px;
   color: #aaaaaa;
+  user-select: none;
 `;
 
 export const HeroContainer = styled.div`
