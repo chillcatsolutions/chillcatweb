@@ -5,6 +5,10 @@ interface IStyledCanvas {
   ref?: any;
 }
 
+type ExtendedHTMLCanvasElement = HTMLCanvasElement & {
+  getContext: any,
+};
+
 const StyledCanvas = styled.canvas<IStyledCanvas>`
   position: absolute;
   width: 100%;
@@ -18,10 +22,10 @@ const FooterCanvas = () => {
 
   const animate = (delta: number) => {
     
-    if(footerCanvas && footerCanvas.current && footerCanvas.current.getContext) {
-      let canvas = footerCanvas.current as HTMLCanvasElement;
+    if (footerCanvas && footerCanvas.current) {
+      let canvas = footerCanvas.current as ExtendedHTMLCanvasElement;
       const _ctx = canvas.getContext("2d") as CanvasRenderingContext2D;
-      
+    
       requestAnimationFrame(animate);
       canvas.width = canvas.width;
       _ctx.fillStyle = "rgba(56,81,172, 1)";

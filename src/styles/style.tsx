@@ -93,11 +93,15 @@ export const ContactContainer = styled.div`
   position: absolute;
   top: 50%;
   width: 655px;
-  /* background-color: #ff00007a; */
   font-family: monospace;
   color: #cdcdcd;
   font-size: 28px;
   left: Calc(50% - 327px);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+  text-align: center;
 `;
 
 export const CopyButton = styled.button`

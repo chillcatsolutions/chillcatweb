@@ -1,6 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
 import { LinkRendererProps } from './HeaderContainer';
+import Link from 'next/link';
+
 
 export const List = styled.ul`
   list-style: none;
@@ -11,10 +13,10 @@ export const List = styled.ul`
 `;
 
 export const ListItem = styled.li`  
-
+  cursor:pointer;
 `;
 
-export const Link = styled.a`
+export const StyledLink = styled.a`
   color: #AAAAAA;
   text-decoration: none;
   transition: all .3s;
@@ -27,9 +29,17 @@ export const Link = styled.a`
 function LinkRenderer({ render }: LinkRendererProps) {
   return (
     <List>
-      {render.map( (link, key) => (
+      {render.map((link, key) => (
         <ListItem key={key}>
-          <Link href={link.url} target='_blank'>{link.name}</Link>
+          {link.url.startsWith('http') ? (
+            <StyledLink href={link.url} target="_blank" rel="noopener noreferrer">
+              {link.name}
+            </StyledLink>
+          ) : (
+            <Link href={link.url}>
+              <StyledLink>{link.name}</StyledLink>
+            </Link>
+          )}
         </ListItem>
       ))}
     </List>

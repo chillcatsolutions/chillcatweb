@@ -13,6 +13,7 @@ import {
 } from '../../styles/style';
 import { HeroReferencesType } from '../../utils/animationLogo';
 
+
 type HeaderContainerProps = {
   references: HeroReferencesType
 }
@@ -37,10 +38,10 @@ function HeaderContainer({ references }: HeaderContainerProps) {
   };
 
   const links: Link[] = [
-    {name:"home", url: "/"},
-    {name:"other", url: "https://www.google.com"},
-    {name:"otherExample", url: "https://www.google.com"},
-    {name:"Support", url: "https://www.google.com"},
+    {name:"Home", url: "/"},
+    {name:"Mission", url: "/mission"},
+    {name:"Services", url: "/services"},
+    {name:"Contact Us", url: "contact"},
   ];
 
   const NavWrapper = styled.nav`
@@ -61,6 +62,7 @@ function HeaderContainer({ references }: HeaderContainerProps) {
         <MainTitle ref={mainTitleRef}>ChillCat</MainTitle>
         <SecondaryTitle ref={secondaryTitleRef}>Solutions</SecondaryTitle>
       </LogoWrapper>
+
       <NavWrapper>
         <LinkRenderer render={links}/>
       </NavWrapper>
