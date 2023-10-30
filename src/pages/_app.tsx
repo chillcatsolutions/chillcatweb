@@ -1,5 +1,12 @@
+import { useEffect, useRef } from "react";
+import { HeroReferencesType, animationLogo } from "../utils/animationLogo";
 import { createGlobalStyle, ThemeProvider } from "styled-components";
 import type { AppProps } from 'next/app'
+import Typewriter from 'typewriter-effect/dist/core';
+
+import { Container, FooterContainer, HeaderContainerStyled } from "../styles/style";
+import FooterCanvas from "../components/FooterCanvas/FooterCanvas.component";
+
 
 const GlobalStyle = createGlobalStyle`
 * {
@@ -18,12 +25,70 @@ const theme = {
   },
 };
 
+type Link = {
+  name: string;
+  url: string;
+};
+export type LinkRendererProps = {
+  render: Link[];
+};
+
 function MyApp({ Component, pageProps }: AppProps) {
+  
+  const startRef = useRef<HTMLDivElement>();
+  const startTextRef = useRef<any>();
+  const firstPipeRef = useRef<any>();
+  const mainTitleRef = useRef<any>();
+  const secondaryTitleRef = useRef<any>();
+  const copyButtonRef = useRef<any>();
+  const tl = useRef<gsap.core.Timeline>();
+
+  const references = {
+    startRef,
+    startTextRef,
+    firstPipeRef,
+    mainTitleRef,
+    secondaryTitleRef
+  }
+
+  useEffect(() => {
+    // gsap.timeline().clear()
+    animationLogo({
+      ...references,
+      copyButtonRef,
+      tl
+    })
+
+    const typewriter = new Typewriter('#typewriter', {
+      loop: false,
+      delay: 60,
+    });
+
+    typewriter
+    .pauseFor(4500)
+    .typeString('Contact us at chillcatsolutions@gmail.com')
+    .start();
+  }, []);
+
+  const Footer = () => {
+    return (
+      <FooterContainer>
+        <FooterCanvas />
+      </FooterContainer>
+    );
+  }
+
   return (
     <>
       <GlobalStyle />
       <ThemeProvider theme={theme}>
-        <Component {...pageProps} />
+        <Container>
+          <HeaderContainerStyled references={references as HeroReferencesType} />
+
+            <Component {...pageProps} />
+
+          <Footer />
+        </Container>
       </ThemeProvider>
     </>
   );

@@ -41,7 +41,7 @@ function HeaderContainer({ references }: HeaderContainerProps) {
     {name:"Home", url: "/"},
     {name:"Mission", url: "/mission"},
     {name:"Services", url: "/services"},
-    {name:"Contact Us", url: "contact"},
+    {name:"Contact Us", url: "/contact"},
   ];
 
   const NavWrapper = styled.nav`

@@ -6,7 +6,7 @@ interface IStyledCanvas {
 }
 
 type ExtendedHTMLCanvasElement = HTMLCanvasElement & {
-  getContext: any,
+  getContext: (contextId: "2d", options?: CanvasRenderingContext2DSettings | undefined) => CanvasRenderingContext2D | null;
 };
 
 const StyledCanvas = styled.canvas<IStyledCanvas>`

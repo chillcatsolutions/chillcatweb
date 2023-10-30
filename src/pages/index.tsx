@@ -1,60 +1,49 @@
-import { useEffect, useRef, useState } from 'react';
+import {  useRef } from 'react';
 import type { NextPage } from 'next';
-import Typewriter from 'typewriter-effect/dist/core';
 
 import {
-  Container,
-  Start,
-  FirstPipe,
-  MainTitle,
-  SecondaryTitle,
   HeroContainer,
   ContactContainer,
   CopyButton,
   IntroContainer,
-  FooterContainer,
-  HeaderContainerStyled
 } from '../styles/style';
 import BackgroundCanvas from '../components/BackgroundCanvas/BackgroundCanvas.component';
-import FooterCanvas from '../components/FooterCanvas/FooterCanvas.component';
-import { HeroReferencesType, animationLogo } from '../utils/animationLogo';
-
 
 const Home: NextPage = () => {
-  const startRef = useRef<HTMLDivElement>();
-  const startTextRef = useRef<any>();
-  const firstPipeRef = useRef<any>();
-  const mainTitleRef = useRef<any>();
-  const secondaryTitleRef = useRef<any>();
+  // const startRef = useRef<HTMLDivElement>();
+  // const startTextRef = useRef<any>();
+  // const firstPipeRef = useRef<any>();
+  // const mainTitleRef = useRef<any>();
+  // const secondaryTitleRef = useRef<any>();
   const copyButtonRef = useRef<any>();
-  const tl = useRef<gsap.core.Timeline>();
+  // const tl = useRef<gsap.core.Timeline>();
 
-  const references = {
-    startRef,
-    startTextRef,
-    firstPipeRef,
-    mainTitleRef,
-    secondaryTitleRef
-  }
+  // const references = {
+  //   startRef,
+  //   startTextRef,
+  //   firstPipeRef,
+  //   mainTitleRef,
+  //   secondaryTitleRef
+  // }
 
-  useEffect(() => {
-    // gsap.timeline().clear()
-    animationLogo({
-      ...references,
-      copyButtonRef,
-      tl
-    })
+  // useEffect(() => {
+  //   // gsap.timeline().clear()
+  //   animationLogo({
+  //     ...references,
+  //     copyButtonRef,
+  //     tl
+  //   })
 
-    const typewriter = new Typewriter('#typewriter', {
-      loop: false,
-      delay: 60,
-    });
+  //   const typewriter = new Typewriter('#typewriter', {
+  //     loop: false,
+  //     delay: 60,
+  //   });
 
-    typewriter
-    .pauseFor(4500)
-    .typeString('Contact us at chillcatsolutions@gmail.com')
-    .start();
-  }, []);
+  //   typewriter
+  //   .pauseFor(4500)
+  //   .typeString('Contact us at chillcatsolutions@gmail.com')
+  //   .start();
+  // }, []);
 
   const Hero = () => (
     <HeroContainer>
@@ -85,22 +74,12 @@ const Home: NextPage = () => {
     </IntroContainer>
   );
 
-  const Footer = () => {
-    return (
-      <FooterContainer>
-        <FooterCanvas />
-      </FooterContainer>
-    );
-  }
-
   return (
-    <Container>
-      <HeaderContainerStyled references={references as HeroReferencesType} />
+    <main>
       <Hero />
       <ContactText />
       <Intro />
-      <Footer />
-    </Container>
+    </main>
   )
 }
 
