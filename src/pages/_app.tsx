@@ -4,8 +4,8 @@ import { createGlobalStyle, ThemeProvider } from "styled-components";
 import type { AppProps } from 'next/app'
 import Typewriter from 'typewriter-effect/dist/core';
 
-import { Container, FooterContainer, HeaderContainerStyled } from "../styles/style";
-import FooterCanvas from "../components/FooterCanvas/FooterCanvas.component";
+import { Container, HeaderContainerStyled } from "../styles/style";
+import Footer from "../components/FooterCanvas/Footer";
 
 
 const GlobalStyle = createGlobalStyle`
@@ -29,6 +29,7 @@ type Link = {
   name: string;
   url: string;
 };
+
 export type LinkRendererProps = {
   render: Link[];
 };
@@ -70,26 +71,18 @@ function MyApp({ Component, pageProps }: AppProps) {
     .start();
   }, []);
 
-  const Footer = () => {
-    return (
-      <FooterContainer>
-        <FooterCanvas />
-      </FooterContainer>
-    );
-  }
-
   return (
     <>
       <GlobalStyle />
-      <ThemeProvider theme={theme}>
-        <Container>
-          <HeaderContainerStyled references={references as HeroReferencesType} />
+        <ThemeProvider theme={theme}>
+          <Container>
+            <HeaderContainerStyled references={references as HeroReferencesType} />
 
-            <Component {...pageProps} />
+              <Component {...pageProps} />
 
-          <Footer />
-        </Container>
-      </ThemeProvider>
+            <Footer />
+          </Container>
+        </ThemeProvider>
     </>
   );
 }

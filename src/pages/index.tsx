@@ -1,13 +1,15 @@
-import {  useRef } from 'react';
-import type { NextPage } from 'next';
+import { useRef } from "react";
+import { useRouter } from 'next/router';
+import type { NextPage } from "next";
 
 import {
   HeroContainer,
   ContactContainer,
   CopyButton,
   IntroContainer,
-} from '../styles/style';
-import BackgroundCanvas from '../components/BackgroundCanvas/BackgroundCanvas.component';
+  MainContainer,
+} from "../styles/style";
+import BackgroundCanvas from "../components/BackgroundCanvas/BackgroundCanvas.component";
 
 const Home: NextPage = () => {
   // const startRef = useRef<HTMLDivElement>();
@@ -44,43 +46,59 @@ const Home: NextPage = () => {
   //   .typeString('Contact us at chillcatsolutions@gmail.com')
   //   .start();
   // }, []);
+  const router = useRouter();
+  const isHome = router.pathname === "/";
 
   const Hero = () => (
     <HeroContainer>
       <BackgroundCanvas />
-    </HeroContainer>  
+    </HeroContainer>
   );
 
   const copyEmailHandler = () => {
     if (navigator && navigator.clipboard) {
-      navigator.clipboard.writeText('chlllcatsolutions@gmail.com').then(function() {
-        console.log('Copying to clipboard was successful!');
-      }, function(err) {
-        console.error('Async: Could not copy text: chillcatsolutions@gmail.com', err);
-      });
+      navigator.clipboard.writeText("chlllcatsolutions@gmail.com").then(
+        function () {
+          console.log("Copying to clipboard was successful!");
+        },
+        function (err) {
+          console.error(
+            "Async: Could not copy text: chillcatsolutions@gmail.com",
+            err
+          );
+        }
+      );
     }
   };
 
   const ContactText = () => (
     <ContactContainer>
-      <span id="typewriter">Welcome, you can contact us through: chillcatsolutions@gmail.com</span>
-      <CopyButton ref={copyButtonRef} type="button" onClick={copyEmailHandler}>Copy Email</CopyButton>
+      <span id="typewriter">
+        Welcome, you can contact us through: chillcatsolutions@gmail.com
+      </span>
+      <CopyButton ref={copyButtonRef} type="button" onClick={copyEmailHandler}>
+        Copy Email
+      </CopyButton>
     </ContactContainer>
   );
 
   const Intro = () => (
-    <IntroContainer>
-      Welcome to ChillCat Solutions
-    </IntroContainer>
+    <IntroContainer>Welcome to ChillCat Solutions</IntroContainer>
   );
 
   return (
-    <main>
-      <Hero />
-      <ContactText />
-      <Intro />
-    </main>
-  )
-}
+    <>
+      {isHome ? (
+        <main>
+          <ContactText />
+          <Intro />
+        </main>
+      ) : (
+        <MainContainer>
+        </MainContainer>
+      )}
+    </>
+  );
+};
 
-export default Home
+export default Home;

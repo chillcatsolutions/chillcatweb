@@ -14,6 +14,7 @@ export const Container = styled.div`
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+  background-color: #1C1C1C;
 `;
 
 export const HeaderWrapper = styled.div`
@@ -25,6 +26,7 @@ export const HeaderWrapper = styled.div`
   flex-wrap: nowrap;
   flex-direction: row;
   align-items: center;
+  height:120px;
 `;
 
 export const LogoWrapper = styled.div`
@@ -81,6 +83,10 @@ export const SecondaryTitle = styled.h2`
   left: 140px;
   color: #aaaaaa;
   user-select: none;
+`;
+
+export const MainContainer = styled.main`
+
 `;
 
 export const HeroContainer = styled.div`
