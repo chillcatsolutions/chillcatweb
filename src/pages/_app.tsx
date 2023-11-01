@@ -2,10 +2,9 @@ import { useEffect, useRef } from "react";
 import { HeroReferencesType, animationLogo } from "../utils/animationLogo";
 import { createGlobalStyle, ThemeProvider } from "styled-components";
 import type { AppProps } from 'next/app'
-import Typewriter from 'typewriter-effect/dist/core';
 
 import { Container, HeaderContainerStyled } from "../styles/style";
-import Footer from "../components/FooterCanvas/Footer";
+import Footer from "../components/Footer/Footer";
 
 
 const GlobalStyle = createGlobalStyle`
@@ -16,6 +15,7 @@ const GlobalStyle = createGlobalStyle`
 }
 body{
   font-family:Verdana;
+  background-color: #1C1C1C;
 }
 `;
  
@@ -59,16 +59,6 @@ function MyApp({ Component, pageProps }: AppProps) {
       copyButtonRef,
       tl
     })
-
-    const typewriter = new Typewriter('#typewriter', {
-      loop: false,
-      delay: 60,
-    });
-
-    typewriter
-    .pauseFor(4500)
-    .typeString('Contact us at chillcatsolutions@gmail.com')
-    .start();
   }, []);
 
   return (
