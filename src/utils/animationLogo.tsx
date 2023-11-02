@@ -30,7 +30,7 @@ export const animationLogo = ({
         && firstPipeRef.current
         && mainTitleRef.current
         && secondaryTitleRef.current
-        && copyButtonRef.current) {
+        ) {
         tl.current = gsap.timeline()
         .fromTo(startRef.current, {
           y: -200,
@@ -94,15 +94,6 @@ export const animationLogo = ({
           stagger: 0.2,
         })
         .fromTo(secondaryTitleRef.current, {
-          opacity: 0,
-          duration: .5,
-          stagger: 0.2, 
-        }, {
-          opacity: 1,
-          duration: .8,
-          stagger: 0.2,
-        })
-        .fromTo(copyButtonRef.current, {
           opacity: 0,
           duration: .5,
           stagger: 0.2, 
