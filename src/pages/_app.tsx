@@ -59,6 +59,7 @@ function MyApp({ Component, pageProps }: AppProps) {
       copyButtonRef,
       tl
     })
+    document.title = "ChillcatSolutions";
   }, []);
 
   return (

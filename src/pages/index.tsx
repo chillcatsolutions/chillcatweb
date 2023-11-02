@@ -11,8 +11,6 @@ import Hero from "../components/HomeComponents/Hero/Hero";
 
 const Home: NextPage = () => {
 
-
-
   useEffect(() => {
 
     const typewriter = new Typewriter('#typewriter', {
@@ -29,7 +27,6 @@ const Home: NextPage = () => {
   
   const router = useRouter();
   const isHome = router.pathname === "/";
-
 
   const Intro = () => (
     <IntroContainer>Welcome to ChillCat Solutions</IntroContainer>
