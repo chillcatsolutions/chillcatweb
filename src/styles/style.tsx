@@ -9,11 +9,14 @@ interface IStart {
 }
 
 export const Container = styled.div`
+  position: relative;
   font-size: 26px;
-  overflow: auto;
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
+  flex-direction: column;
+  justify-content: flex-start;
+  width: 100%;
+  height: 100%;
 `;
 
 export const HeaderWrapper = styled.div`
@@ -25,6 +28,7 @@ export const HeaderWrapper = styled.div`
   flex-wrap: nowrap;
   flex-direction: row;
   align-items: center;
+  height:120px;
 `;
 
 export const LogoWrapper = styled.div`
@@ -83,21 +87,32 @@ export const SecondaryTitle = styled.h2`
   user-select: none;
 `;
 
+export const MainContainer = styled.main`
+
+`;
+
 export const HeroContainer = styled.div`
+  position: relative;
   height: 100vh;
   width: 100%;
   overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 `;
 
 export const ContactContainer = styled.div`
-  position: absolute;
-  top: 50%;
   width: 655px;
-  /* background-color: #ff00007a; */
   font-family: monospace;
   color: #cdcdcd;
   font-size: 28px;
-  left: Calc(50% - 327px);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  z-index:1;
 `;
 
 export const CopyButton = styled.button`
@@ -106,15 +121,19 @@ export const CopyButton = styled.button`
   height: 30px;
   font-family: monospace;
   color: white;
-  float: right;
 `;
 
-export const IntroContainer = styled(HeroContainer)`
-  background-color: #1c1c1c;
+export const IntroContainer = styled.section`
   color: #d9d9d9;
   padding: 50px;
 `;
 
-export const FooterContainer = styled(HeroContainer)`
-  background-color: #1c1c1c;
+export const FooterContainer = styled.footer`
+  width: 100%;
+  height: 350px;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 25px;
 `;
