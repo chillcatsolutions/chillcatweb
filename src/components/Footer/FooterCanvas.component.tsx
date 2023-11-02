@@ -12,7 +12,7 @@ type ExtendedHTMLCanvasElement = HTMLCanvasElement & {
 const StyledCanvas = styled.canvas<IStyledCanvas>`
   position: absolute;
   width: 100%;
-  height: 100vh;
+  height: 100%;
   background: transparent;
 `;
 
