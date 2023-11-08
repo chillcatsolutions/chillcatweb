@@ -12,7 +12,14 @@ const FooterNavWrapper = styled.section`
   flex-wrap: wrap;
   justify-content: center;
   flex-direction: column;
+  align-items: center;
   gap:25px;
+  text-align: center;
+  color: #aaaaaa;
+`;
+
+const FooterLogoWrapper = styled.div`
+
 `;
 
 const FooterNavContent = styled.div`
@@ -20,8 +27,8 @@ const FooterNavContent = styled.div`
   border-bottom: 1px solid black;
   padding-bottom:25px;
   justify-content: space-between;
-  align-items:center;
-  gap: 50px;
+  align-items: flex-start;
+  gap: 30px;
 `;
 const FooterNavSocial = styled.div`
 
@@ -32,7 +39,9 @@ function FooterNav() {
     <FooterNavWrapper>
 
       <FooterNavContent>
-            <span>Logo</span>
+            <FooterLogoWrapper>
+              <a href="/"><img src={Logo.src} alt="" /></a>
+            </FooterLogoWrapper>
             <FooterLinkRender/>
       </FooterNavContent>
 
@@ -41,7 +50,7 @@ function FooterNav() {
             <IconRender/>
 
       </FooterNavSocial>
-      <span>@Copyright 2023 etc</span>
+      <span>Chillcatsolutions Copyright by Chillcatsolutions</span>
     </FooterNavWrapper>
   )
 }

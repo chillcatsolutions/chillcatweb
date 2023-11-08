@@ -3,8 +3,25 @@ import styled from 'styled-components';
 
 
 const WrapperList = styled.ul`
-      list-style: none;
-      text-decoration: none;
+  list-style: none;
+  display:flex;
+  flex-direction: column;
+  gap: 5px;
+`;
+
+const LinkWrapper = styled.li`
+  
+`;
+
+const Link = styled.a`
+  text-decoration: none;
+  color: #aaaaaa;  
+  font-size: .9em;
+
+  &:hover{
+    color: #14761D;
+    font-weight: bolder;
+  }
 `;
 
 function FooterLinkRender() {
@@ -18,7 +35,9 @@ function FooterLinkRender() {
     [
       { text: 'Link 3', url: 'https://link3.com' },
     ],
-    [], // No links in this ul
+    [
+      { text: 'Link extra', url: '/'},
+    ],
     [
       { text: 'Link 4', url: 'https://link4.com' },
       { text: 'Link 5', url: 'https://link5.com' },
@@ -28,16 +47,17 @@ function FooterLinkRender() {
   return (
     <>
       {LinkMatrix.map((links, index) => (
-        <WrapperList key={index}>
-          {links.map((link, linkIndex) => (
-            <li key={linkIndex}>
-              <a href={link.url}>{link.text}</a>
-            </li>
-          ))}
-        </WrapperList>
+        links.length > 0 ? (
+          <WrapperList key={index}>
+            {links.map((link, linkIndex) => (
+              <LinkWrapper key={linkIndex}>
+                <Link href={link.url}>{link.text}</Link>
+              </LinkWrapper>
+            ))}
+          </WrapperList>
+        ) : null
       ))}
     </>
   );
 }
-
 export default FooterLinkRender;
