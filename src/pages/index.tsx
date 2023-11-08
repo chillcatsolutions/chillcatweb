@@ -3,11 +3,12 @@ import { useRouter } from 'next/router';
 import type { NextPage } from "next";
 import Typewriter from 'typewriter-effect/dist/core';
 
+
+import Hero from "../components/HomeComponents/Hero/Hero";
 import {
   IntroContainer,
   MainContainer,
 } from "../styles/style";
-import Hero from "../components/HomeComponents/Hero/Hero";
 
 const Home: NextPage = () => {
 
