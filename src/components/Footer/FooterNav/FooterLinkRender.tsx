@@ -7,6 +7,13 @@ const WrapperList = styled.ul`
   display:flex;
   flex-direction: column;
   gap: 5px;
+
+  @media (max-width: 715px){
+    flex-basis: 40%;
+    gap: 0;
+    font-size: .7em;
+    font-weight: bold;
+  }
 `;
 
 const LinkWrapper = styled.li`
@@ -17,10 +24,10 @@ const Link = styled.a`
   text-decoration: none;
   color: #aaaaaa;  
   font-size: .9em;
+  transition: all .3s;
 
   &:hover{
-    color: #14761D;
-    font-weight: bolder;
+    color: #1ea91ea8;
   }
 `;
 
@@ -29,18 +36,18 @@ function FooterLinkRender() {
 
   const LinkMatrix: Link[][] = [
     [
-      { text: 'Link 1', url: 'https://link1.com' },
-      { text: 'Link 2', url: 'https://link2.com' },
+      { text: 'Mission', url: 'https://link1.com' },
+      { text: 'About Us', url: 'https://link2.com' },
     ],
     [
-      { text: 'Link 3', url: 'https://link3.com' },
+      { text: 'More Projects', url: 'https://link3.com' },
     ],
     [
-      { text: 'Link extra', url: '/'},
+      { text: 'Developers', url: '/'},
     ],
     [
-      { text: 'Link 4', url: 'https://link4.com' },
-      { text: 'Link 5', url: 'https://link5.com' },
+      { text: 'extra1', url: 'https://link4.com' },
+      { text: 'extra2', url: 'https://link5.com' },
     ],
   ];
 

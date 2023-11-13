@@ -32,7 +32,7 @@ export const HeaderWrapper = styled.div`
 `;
 
 export const LogoWrapper = styled.div`
-  width: 47%;
+  width: 50%;
   cursor:pointer;
 `;
 
@@ -148,10 +148,11 @@ export const IntroContainer = styled.section`
 
 export const FooterContainer = styled.footer`
   width: 100%;
-  height: 500px;
+  height: 550px;
   position: relative;
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: flex-end;
   padding: 25px;
+  padding-bottom: 0;
 `;
