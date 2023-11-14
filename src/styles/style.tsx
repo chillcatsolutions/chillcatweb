@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
 import HeaderContainer from "../components/Header/HeaderContainer";
 
 
@@ -32,7 +32,7 @@ export const HeaderWrapper = styled.div`
 `;
 
 export const LogoWrapper = styled.div`
-  width: 47%;
+  width: 50%;
   cursor:pointer;
 `;
 
@@ -115,13 +115,31 @@ export const ContactContainer = styled.div`
   z-index:1;
 `;
 
+const buttonShowAnimation = keyframes`
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+`;
+
 export const CopyButton = styled.button`
   background-color: red;
   width: 100px;
   height: 30px;
   font-family: monospace;
   color: white;
+  opacity: 0;
+  transition: all 0.3s;
+
+  &.buttonShowAnimation {
+    animation: ${buttonShowAnimation} 4s 7s forwards;
+    opacity: 0;
+  }
 `;
+
+
 
 export const IntroContainer = styled.section`
   color: #d9d9d9;
@@ -130,10 +148,11 @@ export const IntroContainer = styled.section`
 
 export const FooterContainer = styled.footer`
   width: 100%;
-  height: 350px;
+  height: 550px;
   position: relative;
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: flex-end;
   padding: 25px;
+  padding-bottom: 0;
 `;

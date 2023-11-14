@@ -51,7 +51,7 @@ function HeaderContainer({ references }: HeaderContainerProps) {
   `;
 
   return (
-    <HeaderWrapper>
+    <HeaderWrapper id='start'>
       <LogoWrapper>
         <Start ref={startRef} onMouseEnter={onEnter} onMouseLeave={onLeave}>
             <span ref={startTextRef}>

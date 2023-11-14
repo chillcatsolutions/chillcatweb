@@ -3,8 +3,32 @@ import styled from 'styled-components';
 
 
 const WrapperList = styled.ul`
-      list-style: none;
-      text-decoration: none;
+  list-style: none;
+  display:flex;
+  flex-direction: column;
+  gap: 5px;
+
+  @media (max-width: 715px){
+    flex-basis: 40%;
+    gap: 0;
+    font-size: .7em;
+    font-weight: bold;
+  }
+`;
+
+const LinkWrapper = styled.li`
+  
+`;
+
+const Link = styled.a`
+  text-decoration: none;
+  color: #aaaaaa;  
+  font-size: .9em;
+  transition: all .3s;
+
+  &:hover{
+    color: #1ea91ea8;
+  }
 `;
 
 function FooterLinkRender() {
@@ -12,32 +36,35 @@ function FooterLinkRender() {
 
   const LinkMatrix: Link[][] = [
     [
-      { text: 'Link 1', url: 'https://link1.com' },
-      { text: 'Link 2', url: 'https://link2.com' },
+      { text: 'Mission', url: 'https://link1.com' },
+      { text: 'About Us', url: 'https://link2.com' },
     ],
     [
-      { text: 'Link 3', url: 'https://link3.com' },
+      { text: 'More Projects', url: 'https://link3.com' },
     ],
-    [], // No links in this ul
     [
-      { text: 'Link 4', url: 'https://link4.com' },
-      { text: 'Link 5', url: 'https://link5.com' },
+      { text: 'Developers', url: '/'},
+    ],
+    [
+      { text: 'extra1', url: 'https://link4.com' },
+      { text: 'extra2', url: 'https://link5.com' },
     ],
   ];
 
   return (
     <>
       {LinkMatrix.map((links, index) => (
-        <WrapperList key={index}>
-          {links.map((link, linkIndex) => (
-            <li key={linkIndex}>
-              <a href={link.url}>{link.text}</a>
-            </li>
-          ))}
-        </WrapperList>
+        links.length > 0 ? (
+          <WrapperList key={index}>
+            {links.map((link, linkIndex) => (
+              <LinkWrapper key={linkIndex}>
+                <Link href={link.url}>{link.text}</Link>
+              </LinkWrapper>
+            ))}
+          </WrapperList>
+        ) : null
       ))}
     </>
   );
 }
-
 export default FooterLinkRender;

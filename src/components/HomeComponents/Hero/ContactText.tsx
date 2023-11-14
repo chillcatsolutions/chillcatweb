@@ -25,9 +25,11 @@ function ContactText() {
           Welcome, you can contact us through: chillcatsolutions@gmail.com
         </span>
         <CopyButton
+          className="buttonShowAnimation"
           ref={copyButtonRef}
           type="button"
-          onClick={copyEmailHandler}>
+          onClick={copyEmailHandler}
+          >
           Copy Email
         </CopyButton>
       </ContactContainer>
