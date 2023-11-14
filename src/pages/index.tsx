@@ -1,5 +1,4 @@
 import { useEffect } from "react";
-import { useRouter } from 'next/router';
 import type { NextPage } from "next";
 import Typewriter from 'typewriter-effect/dist/core';
 
@@ -25,9 +24,7 @@ const Home: NextPage = () => {
     .start();
 
   }, []);
-  
-  const router = useRouter();
-  const isHome = router.pathname === "/";
+
 
   const Intro = () => (
     <IntroContainer>Welcome to ChillCat Solutions</IntroContainer>

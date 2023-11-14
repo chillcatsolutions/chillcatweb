@@ -29,10 +29,10 @@ export const HeaderWrapper = styled.div`
   flex-direction: row;
   align-items: center;
   height:120px;
+  padding-right: 25px;
 `;
 
 export const LogoWrapper = styled.div`
-  width: 50%;
   cursor:pointer;
 `;
 
