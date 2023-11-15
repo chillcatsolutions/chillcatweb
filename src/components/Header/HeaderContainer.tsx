@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { gsap } from 'gsap';
 import LinkRenderer from './LinkRenderer';
 import styled from 'styled-components';
@@ -11,7 +11,7 @@ import {
   SecondaryTitle,
   HeaderWrapper,
   LogoWrapper
-} from '../../styles/style';
+} from '../../styles/style';  
 import { HeroReferencesType } from '../../utils/animationLogo';
 import Hamburguer from './Hamburguer';
 
@@ -28,6 +28,13 @@ export type LinkRendererProps = {
 };
 
 function HeaderContainer({ references }: HeaderContainerProps) {
+
+  const [isChecked, setIsChecked] = useState(false);
+
+  const handleCheckboxChange = () => {
+    setIsChecked(!isChecked);
+  };
+
   const {
     startRef,
     startTextRef,
@@ -52,11 +59,33 @@ function HeaderContainer({ references }: HeaderContainerProps) {
   ];
 
   const NavWrapper = styled.nav`
-    width: 80%;
+
     max-width: 700px;
     padding: 0 30px;
+
+    @media (max-width: 916px){
+      display: ${isChecked ? 'block' : 'none'};
+      position: absolute;
+      top: 20%;
+      width: 100%;
+      height: 100%;
+    }
   `;
 
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth > 916) {
+        setIsChecked(false);
+      }
+  };
+
+  window.addEventListener('resize', handleResize);
+
+  return () => {
+    window.removeEventListener('resize', handleResize);
+  };
+  }, []);
+      
   const router = useRouter();
   const isHome = router.pathname === "/";
 
@@ -83,7 +112,7 @@ function HeaderContainer({ references }: HeaderContainerProps) {
           <LinkRenderer render={links} />
         </NavWrapper>
 
-        <Hamburguer/>
+        <Hamburguer onCheckboxChange={handleCheckboxChange}/>
       </HeaderWrapper>
     </>
   );

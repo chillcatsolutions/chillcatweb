@@ -10,6 +10,18 @@ export const List = styled.ul`
   gap: 50px;
   justify-content: space-between;
   transform: translateY(50%);
+
+  @media (max-width: 1366px){
+    gap: 30px;
+  }
+
+  @media (max-width: 916px){
+      flex-direction: column;
+      background-color: #ffffff10;
+      align-items: center;
+      backdrop-filter: blur(10px);
+      z-index: 1;
+    }
 `;
 
 export const ListItem = styled.li`  
@@ -23,6 +35,10 @@ export const StyledLink = styled.a`
   
   &:hover{
     color: #14761D;
+  }
+
+  @media (max-width: 1366px){
+    font-size: .8em;
   }
 `;
 

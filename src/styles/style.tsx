@@ -29,11 +29,16 @@ export const HeaderWrapper = styled.div`
   flex-direction: row;
   align-items: center;
   height:120px;
-  padding-right: 25px;
+
+  @media (max-width: 916px){
+    padding-right: 25px;
+  }
 `;
 
 export const LogoWrapper = styled.div`
   cursor:pointer;
+  width: 350px;
+  position: relative;
 `;
 
 export const HeaderContainerStyled = styled(HeaderContainer)`
@@ -51,7 +56,7 @@ export const Start = styled.div<IStart>`
   background-color: rgba(30, 30, 30, 0.66);
   border-radius: 15px;
   width: 100px;
-  height: 100px;
+  height: 100%;
   user-select:none;
 
   span {
@@ -112,7 +117,7 @@ export const ContactContainer = styled.div`
   justify-content: center;
   align-items: center;
   text-align: center;
-  z-index:1;
+  z-index: 1000;
 `;
 
 const buttonShowAnimation = keyframes`
