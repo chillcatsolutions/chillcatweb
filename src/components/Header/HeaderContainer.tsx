@@ -28,9 +28,9 @@ export type LinkRendererProps = {
 };
 
 function HeaderContainer({ references }: HeaderContainerProps) {
-
+  
   const [isChecked, setIsChecked] = useState(false);
-
+  
   const handleCheckboxChange = () => {
     setIsChecked(!isChecked);
   };
@@ -66,9 +66,8 @@ function HeaderContainer({ references }: HeaderContainerProps) {
     @media (max-width: 916px){
       display: ${isChecked ? 'block' : 'none'};
       position: absolute;
-      top: 20%;
-      width: 100%;
       height: 100%;
+      padding: 0;
     }
   `;
 

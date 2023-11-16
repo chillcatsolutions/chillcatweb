@@ -1,7 +1,6 @@
 import styled, { keyframes } from "styled-components";
 import HeaderContainer from "../components/Header/HeaderContainer";
 
-
 interface IStart {
   ref?: any;
   onMouseEnter?: any;
@@ -20,25 +19,26 @@ export const Container = styled.div`
 `;
 
 export const HeaderWrapper = styled.div`
-  position: absolute;
-  z-index: 1;
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
-  flex-wrap: nowrap;
-  flex-direction: row;
-  align-items: center;
-  height:120px;
+position: absolute;
+z-index: 10;
+width: 100%;
+display: flex;
+justify-content: space-between;
+flex-wrap: nowrap;
+flex-direction: row;
+align-items: center;
+height: 120px;
 
-  @media (max-width: 916px){
-    padding-right: 25px;
-  }
+@media (max-width: 916px) {
+  
+}
 `;
 
 export const LogoWrapper = styled.div`
   cursor:pointer;
   width: 350px;
   position: relative;
+  z-index: 10;
 `;
 
 export const HeaderContainerStyled = styled(HeaderContainer)`
@@ -117,7 +117,7 @@ export const ContactContainer = styled.div`
   justify-content: center;
   align-items: center;
   text-align: center;
-  z-index: 1000;
+  z-index: 1;
 `;
 
 const buttonShowAnimation = keyframes`

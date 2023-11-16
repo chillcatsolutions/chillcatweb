@@ -6,6 +6,7 @@ import styled from 'styled-components'
 const HambWrapper = styled.div`
       position: relative;
       display: none;
+      right: 25px;
       
       & input{
             display: none;
@@ -19,6 +20,7 @@ const HambWrapper = styled.div`
             width: 100%;
             height: 50px;
             cursor: pointer;
+            
             & div, div::after, div::before{
                   transition: all .3s;
             }
@@ -62,7 +64,11 @@ const HambButton = styled.div`
       }
 `;
 
-function Hamburguer( {onCheckboxChange} ) {
+type HamburgerProps = { 
+      onCheckboxChange: React.MouseEventHandler<HTMLLabelElement> | undefined;
+ }
+
+function Hamburguer( {onCheckboxChange}: HamburgerProps  ) {
   return (
       <HambWrapper>
             <label htmlFor="Burguer" onClick={onCheckboxChange}>
