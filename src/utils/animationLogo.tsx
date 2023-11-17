@@ -24,7 +24,6 @@ export const animationLogo = ({
     copyButtonRef,
     tl
 }: AnimationLogoProps) => {
-  console.log("copyButtonRef: ", copyButtonRef);
     if(startRef.current
         && startTextRef.current
         && firstPipeRef.current

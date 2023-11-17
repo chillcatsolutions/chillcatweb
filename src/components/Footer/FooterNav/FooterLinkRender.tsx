@@ -36,18 +36,18 @@ function FooterLinkRender() {
 
   const LinkMatrix: Link[][] = [
     [
-      { text: 'Mission', url: 'https://link1.com' },
-      { text: 'About Us', url: 'https://link2.com' },
+      { text: 'Mission', url: '/' },
+      { text: 'About Us', url: '/' },
     ],
     [
-      { text: 'More Projects', url: 'https://link3.com' },
+      { text: 'More Projects', url: '/' },
     ],
     [
       { text: 'Developers', url: '/'},
     ],
     [
-      { text: 'extra1', url: 'https://link4.com' },
-      { text: 'extra2', url: 'https://link5.com' },
+      { text: 'extra1', url: '/' },
+      { text: 'extra2', url: '/' },
     ],
   ];
 
