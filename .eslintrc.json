@@ -1,3 +1,7 @@
 {
+  "rules": {
+    "@next/next/no-document-import-in-page": "off"
+  }, //if dont wanted to add this rule, you need to update next to a versions >= canary 11.x.x
+  
   "extends": "next/core-web-vitals"
 }
