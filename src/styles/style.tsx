@@ -130,13 +130,18 @@ const buttonShowAnimation = keyframes`
 `;
 
 export const CopyButton = styled.button`
-  background-color: red;
+  cursor: pointer;
+  background-color: #a700005c;
   width: 100px;
   height: 30px;
   font-family: monospace;
   color: white;
   opacity: 0;
   transition: all 0.3s;
+
+  &:hover{
+    background-color: #ff000052;
+  }
 
   &.buttonShowAnimation {
     animation: ${buttonShowAnimation} 4s 7s forwards;

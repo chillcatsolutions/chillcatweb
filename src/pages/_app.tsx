@@ -13,9 +13,33 @@ const GlobalStyle = createGlobalStyle`
   padding: 0;
   box-sizing: border-box;
 }
+html {
+  overflow-y: scroll;
+  overflow-y: overlay;
+}
 body{
   font-family:Verdana;
   background-color: #1C1C1C;
+
+  &::-webkit-scrollbar{
+    width: .5em;
+    position: absolute;
+  }
+
+  &::-webkit-scrollbar-track{
+    background-color: #000;
+    border-radius: 10px;
+  }
+  
+  &::-webkit-scrollbar-thumb{
+    background-color: #aaa;
+    border-radius: 10px;
+
+    &:hover{
+      background-color: #1c1c1c;
+    }
+  }
+
 }
 `;
  

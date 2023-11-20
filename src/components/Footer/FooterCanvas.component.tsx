@@ -25,7 +25,9 @@ const FooterCanvas = () => {
     if (footerCanvas && footerCanvas.current) {
       let canvas = footerCanvas.current as ExtendedHTMLCanvasElement;
       const _ctx = canvas.getContext("2d") as CanvasRenderingContext2D;
-    
+      
+      delta *= 0.5; 
+
       requestAnimationFrame(animate);
       canvas.width = canvas.width;
       _ctx.fillStyle = "rgba(56,81,172, 1)";
