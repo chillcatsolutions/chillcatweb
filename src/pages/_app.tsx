@@ -21,6 +21,12 @@ body{
   font-family:Verdana;
   background-color: #1C1C1C;
 
+  
+  //firefox styles---
+  scrollbar-color: #aaa #1C1C1C;
+  scrollbar-width: thin;
+  //-----------------
+
   &::-webkit-scrollbar{
     width: .5em;
     position: absolute;

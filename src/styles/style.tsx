@@ -93,7 +93,10 @@ export const SecondaryTitle = styled.h2`
 `;
 
 export const MainContainer = styled.main`
-
+  padding: 20px 0px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 `;
 
 export const HeroContainer = styled.div`
@@ -148,8 +151,6 @@ export const CopyButton = styled.button`
     opacity: 0;
   }
 `;
-
-
 
 export const IntroContainer = styled.section`
   color: #d9d9d9;
