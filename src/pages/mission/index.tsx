@@ -1,22 +1,10 @@
 import React from 'react'
 import styled from 'styled-components'
-import { MainContainer } from '../../styles/style';
+import { MainContainer, ParraContainer, TitleContainer } from '../../styles/style';
 import BckMission from '../../../public/BckMission.jpg';
 
 
-const ParraContainer = styled.div`
-  flex-basis: 50%;
-  width: 100%;
-  display: flex;
-  align-items: center;
-  background-color: #ffffff10;
-  border-radius: 5px;
-  padding: 30px;
 
-  @media (max-width: 1366px) {
-    font-size: .7em;
-  }
-`;
 
 /*mission*/
 const Mission = styled.section`
@@ -38,16 +26,6 @@ const Mission = styled.section`
   }
 `;
 
-const TitleContainer = styled.div`
-  flex-basis: 50%;
-  width: 100%;
-  display: flex;
-  align-items: center;
-  background-color: #ffffff10;
-  border-radius: 5px;
-  padding: 30px;
-  text-align: center;
-`;
 
 /*end of mission*/
 

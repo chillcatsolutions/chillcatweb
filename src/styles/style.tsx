@@ -167,3 +167,28 @@ export const FooterContainer = styled.footer`
   padding: 25px;
   padding-bottom: 0;
 `;
+
+
+export const ParraContainer = styled.div`
+  flex-basis: 50%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  background-color: #ffffff10;
+  border-radius: 5px;
+  padding: 30px;
+
+  @media (max-width: 1366px) {
+    font-size: .7em;
+  }
+`;
+export const TitleContainer = styled.div`
+  flex-basis: 50%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  background-color: #ffffff10;
+  border-radius: 5px;
+  padding: 30px;
+  text-align: center;
+`;

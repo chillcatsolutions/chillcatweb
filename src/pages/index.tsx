@@ -20,7 +20,7 @@ const Home: NextPage = () => {
 
     typewriter
     .pauseFor(4500)
-    .typeString('Contact us at chillcatsolutions@gmail.com')
+    .typeString('Contact us at contact@chillcatsolutions.com')
     .start();
 
   }, []);
