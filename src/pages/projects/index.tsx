@@ -7,54 +7,68 @@ const Ourprojects = styled.div`
 `;
 
 const CardContainer = styled.div`
-  background-color: #f5f5f5;
+  background-color: #1c1c1c;
   padding: 20px;
   border-radius: 8px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  outline: 2px solid rgba(30,169,30,0.66);
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  align-items: center;
+  text-align: center;
 `;
 
 const CardGrid = styled.div`
   margin: 20px;
+  padding: 20px;
+  background-color: #ffffff10;
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(424px, 1fr));
   gap: 20px;
+  border-radius: 20px;
 `;
 
 const ProjectName = styled.h3`
-  color: #333;
+  color: #ccc;
 `;
 
 const SectionTitle = styled.h4`
-  color: #555;
+  color: #14761D;
   margin-top: 10px;
 `;
 
 const DescriptionContent = styled.p`
   font-size: .8em;
+  color: #ccc;
 `;
 
 const ProjectLink = styled.a`
   text-decoration: none;
-  color: #333;
+  color: #ccc;
+  user-select: none;
+
+  &:hover{
+    color: #14761D;
+  }
 `;
 
+
 const Technologies = styled.span`
-  color: #777;
+  color: #1ba729;
 `;
 
 const Card = ({ name, description, technologies, url }) => {
   return (
     <CardContainer>
-      <div>
-        <ProjectName>{name}</ProjectName>
-        <SectionTitle>Description</SectionTitle>
-        <DescriptionContent>
-          {description}
-        </DescriptionContent>
-        {url? (<ProjectLink href={url}>click para ver el projecto</ProjectLink>) : ("")}
-        <SectionTitle>Technologies</SectionTitle>
-        <Technologies>{technologies}</Technologies>
-      </div>
+      <ProjectName>{name}</ProjectName>
+      <SectionTitle>Description</SectionTitle>
+      <DescriptionContent>
+        {description}
+      </DescriptionContent>
+      {url? (<ProjectLink href={url}>Click to check the project</ProjectLink>) : ("")}
+      <SectionTitle>Technologies</SectionTitle>
+      <Technologies>{technologies}</Technologies>
     </CardContainer>
   );
 };

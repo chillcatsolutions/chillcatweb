@@ -35,6 +35,7 @@ const Vision = styled.section`
   flex-direction: column;
   color: #ccc;
   width: 100%;
+  border-radius: 20px;
   @media (max-width: 916px) {
     flex-direction: column;
     padding: 25px;
@@ -49,6 +50,7 @@ const Objetives = styled.section`
   background-color: #ccc;
   color: #000;
   width: 100%;
+  border-radius: 20px;
   @media (max-width: 916px) {
   flex-direction: column;
   padding: 25px;
@@ -77,9 +79,6 @@ function index() {
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil aspernatur consequatur ipsam, impedit blanditiis molestias eos, sint asperiores consectetur ullam labore mollitia veritatis. Consequuntur et officiis voluptates neque cupiditate cumque! Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minus facere ducimus aut perspiciatis officiis voluptate eaque at distinctio libero ullam facilis illo neque laborum autem, saepe aperiam hic minima veritatis.
           </p>
         </ParraContainer>
-        <div>
-          <img src="" alt="" />
-        </div>
       </Vision>
 
       <Objetives>
@@ -89,9 +88,6 @@ function index() {
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil aspernatur consequatur ipsam, impedit blanditiis molestias eos, sint asperiores consectetur ullam labore mollitia veritatis. Consequuntur et officiis voluptates neque cupiditate cumque! Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minus facere ducimus aut perspiciatis officiis voluptate eaque at distinctio libero ullam facilis illo neque laborum autem, saepe aperiam hic minima veritatis.
           </p>
         </ParraContainer>
-        <div>
-          <img src="" alt="" />
-        </div>
       </Objetives>
     </MainContainer>
   )
