@@ -1,9 +1,15 @@
 import React from 'react';
 import { MainContainer, ParraContainer, TitleContainer } from '../../styles/style';
 import styled from 'styled-components';
+import BckMission from '../../../public/BckMission.jpg';
 
 const Ourprojects = styled.div`
   color: #ccc;
+`;
+
+const CardContent = styled.div`
+  opacity: 0;
+  transition: opacity .5s;
 `;
 
 const CardContainer = styled.div`
@@ -11,12 +17,28 @@ const CardContainer = styled.div`
   padding: 20px;
   border-radius: 8px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  outline: 2px solid rgba(30,169,30,0.66);
   display: flex;
   flex-direction: column;
   gap: 20px;
   align-items: center;
+  justify-content: center;
   text-align: center;
+  background: url(${BckMission.src});
+  transition: background 0.7s, opacity 0.7s;
+  background-position: center;
+  background-repeat: no-repeat;
+  object-fit: cover;
+
+  &:hover {
+    background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
+      url(${BckMission.src});
+    cursor: default;
+    outline: 2px solid rgba(30, 169, 30, 0.66);
+
+    ${CardContent} {
+      opacity: 1;
+    }
+  }
 `;
 
 const CardGrid = styled.div`
@@ -24,10 +46,12 @@ const CardGrid = styled.div`
   padding: 20px;
   background-color: #ffffff10;
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(424px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(354px, 1fr));
   gap: 20px;
   border-radius: 20px;
 `;
+
+
 
 const ProjectName = styled.h3`
   color: #ccc;
@@ -61,14 +85,17 @@ const Technologies = styled.span`
 const Card = ({ name, description, technologies, url }) => {
   return (
     <CardContainer>
-      <ProjectName>{name}</ProjectName>
-      <SectionTitle>Description</SectionTitle>
-      <DescriptionContent>
-        {description}
-      </DescriptionContent>
-      {url? (<ProjectLink href={url}>Click to check the project</ProjectLink>) : ("")}
-      <SectionTitle>Technologies</SectionTitle>
-      <Technologies>{technologies}</Technologies>
+      <CardContent>
+        <ProjectName>{name}</ProjectName>
+        <SectionTitle>Description</SectionTitle>
+        <DescriptionContent>
+          {description}
+        </DescriptionContent>
+        {url? (<ProjectLink href={url}>Click to check the project</ProjectLink>) : ("")}
+        <SectionTitle>Technologies</SectionTitle>
+        <Technologies>{technologies}</Technologies>
+      </CardContent>
+
     </CardContainer>
   );
 };
@@ -83,6 +110,27 @@ function Index() {
       url: "http:cesart.chillcatsolutions.com",
       technologies: "Javascript, html, css",
     },
+    {
+    name: "lorem Ipsum",
+    description:
+      "Lorem ipsum molestiae nihil,  mollitia sed qui dolore quam, consequatur ipsam aut rem id sapiente ratione modi",
+    url: "http:lorem.com",
+    technologies: "lorem, iPSUM, Amet",
+  },
+  {
+    name: "lorem Ipsum",
+    description:
+      "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Similique ab, iste itaque quos maiores molestiae nihil,  mollitia sed qui dolore quam, consequatur ipsam aut rem id sapiente ratione modi",
+    url: "http:lorem.com",
+    technologies: "lorem, iPSUM, Amet",
+  },
+  {
+    name: "lorem Ipsum",
+    description:
+      "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Similique ab, iste itaque quos maiores molestiae nihil,  mollitia sed qui dolore quam, consequatur ipsam aut rem id sapiente ratione modi",
+    url: "",
+    technologies: "lorem, iPSUM, Amet",
+  },
   ];
 
   return (

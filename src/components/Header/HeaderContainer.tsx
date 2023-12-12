@@ -28,11 +28,14 @@ export type LinkRendererProps = {
 };
 
 function HeaderContainer({ references }: HeaderContainerProps) {
-  
   const [isChecked, setIsChecked] = useState(false);
-  
+
   const handleCheckboxChange = () => {
     setIsChecked(!isChecked);
+  };
+
+  const closeMenu = () => {
+    setIsChecked(false);
   };
 
   const {
@@ -44,53 +47,62 @@ function HeaderContainer({ references }: HeaderContainerProps) {
   } = references;
 
   const onEnter = (e: MouseEvent) => {
-    gsap.to(e.currentTarget, { backgroundColor: "rgb(50, 6, 3, 0.8)" });
+    gsap.to(e.currentTarget, { backgroundColor: 'rgb(50, 6, 3, 0.8)' });
   };
 
   const onLeave = (e: MouseEvent) => {
-    gsap.to(e.currentTarget, { backgroundColor: "rgba(30,30,30,0.66)" });
+    gsap.to(e.currentTarget, { backgroundColor: 'rgba(30,30,30,0.66)' });
   };
 
   const links: Link[] = [
-    { name: "Home", url: "/" },
-    { name: "Mission", url: "/mission" },
-    { name: "Services", url: "/services" },
-    { name: "Contact Us", url: "/contact" },
+    { name: 'Home', url: '/' },
+    { name: 'Mission', url: '/mission' },
+    { name: 'Services', url: '/services' },
+    { name: 'Contact Us', url: '/contact' },
   ];
 
   const NavWrapper = styled.nav`
-
     max-width: 700px;
     padding: 0 30px;
 
-    @media (max-width: 916px){
+    @media (max-width: 916px) {
       display: ${isChecked ? 'block' : 'none'};
       position: absolute;
-      height: 100%;
-      padding: 0;
+      flex-direction: column;
+      align-items: center;
+      width: 100%;
     }
   `;
 
-  useEffect(() => {
-    const handleResize = () => {
-      if (window.innerWidth > 916) {
-        setIsChecked(false);
-      }
+useEffect(() => {
+  const handleResize = () => {
+    if (window.innerWidth > 916) {
+      setIsChecked(false);
+    }
+  };
+
+  const handleLinkClick = () => {
+    closeMenu();
   };
 
   window.addEventListener('resize', handleResize);
 
+  const links = document.querySelectorAll('StyledLink');
+  links.forEach(link => link.addEventListener('click', handleLinkClick));
+
   return () => {
     window.removeEventListener('resize', handleResize);
+
+    links.forEach(link => link.removeEventListener('click', handleLinkClick));
   };
-  }, []);
-      
+}, []);
+
   const router = useRouter();
-  const isHome = router.pathname === "/";
+  const isHome = router.pathname === '/';
 
   return (
     <>
-      <HeaderWrapper id="start" { ...(isHome ? {} : { style: {position: 'relative'} })}>
+      <HeaderWrapper isChecked={isChecked} id="start" {...(isHome ? {} : { style: { position: 'relative' } })}>
         <LogoWrapper>
           <Start ref={startRef} onMouseEnter={onEnter} onMouseLeave={onLeave}>
             <span ref={startTextRef}>
@@ -108,13 +120,13 @@ function HeaderContainer({ references }: HeaderContainerProps) {
         </LogoWrapper>
 
         <NavWrapper>
-          <LinkRenderer render={links} />
+          <LinkRenderer render={links}/>
         </NavWrapper>
 
         <Hamburguer onCheckboxChange={handleCheckboxChange}/>
       </HeaderWrapper>
     </>
   );
-  }
+}
 
-export default HeaderContainer
+export default HeaderContainer;

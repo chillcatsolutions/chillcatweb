@@ -19,19 +19,20 @@ export const Container = styled.div`
 `;
 
 export const HeaderWrapper = styled.div`
-position: absolute;
-z-index: 10;
-width: 100%;
-display: flex;
-justify-content: space-between;
-flex-wrap: nowrap;
-flex-direction: row;
-align-items: center;
-height: 120px;
+  position: absolute;
+  z-index: 10;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: nowrap;
+  flex-direction: row;
+  align-items: center;
+  height: 120px;
 
-@media (max-width: 916px) {
-  
-}
+  @media (max-width: 916px) {
+    background-color: ${props => props.isChecked ? "rgba(0, 0, 0, 0.10)" : ""};
+    backdrop-filter: ${props => props.isChecked ? "blur(4px)" : ""};
+  }
 `;
 
 export const LogoWrapper = styled.div`
@@ -45,7 +46,6 @@ export const HeaderContainerStyled = styled(HeaderContainer)`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: #333;
   padding: 10px 20px;
 `;
 

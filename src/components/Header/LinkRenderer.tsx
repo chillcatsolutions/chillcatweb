@@ -20,9 +20,12 @@ export const List = styled.ul`
       position: absolute;
       flex-direction: column;
       align-items: center;
+      background-color: #000000d6;
       backdrop-filter: blur(4px);
-      z-index: 1;
-      width: 100vw;
+      z-index: 11;
+      width: 100%;
+      left: 0;
+      top: 0;
     }
 `;
 
@@ -32,6 +35,7 @@ export const ListItem = styled.li`
     border-bottom: 5px solid #cccccc10;
     width: 50%;
     text-align: center;
+    margin: 5px;
   }
 `;
 
@@ -42,7 +46,8 @@ export const StyledLink = styled.a`
   width: 100%;
   height: 100%;
   cursor: pointer;
-  
+  padding: 5px;
+
   &:hover{
     color: #14761D;
   }
@@ -55,7 +60,6 @@ export const StyledLink = styled.a`
     &:hover{
         border-bottom: 2px solid #fff;
         border-radius: 10px;
-        padding: 5px;
         border-bottom: 2px solid #14761D;
     }
   }
