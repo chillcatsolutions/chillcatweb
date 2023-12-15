@@ -46,9 +46,14 @@ const CardGrid = styled.div`
   padding: 20px;
   background-color: #ffffff10;
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(354px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
   gap: 20px;
   border-radius: 20px;
+
+  @media (max-width: 451px){
+    padding: 0;
+    margin: 0;
+  }
 `;
 
 
@@ -82,7 +87,14 @@ const Technologies = styled.span`
   color: #1ba729;
 `;
 
-const Card = ({ name, description, technologies, url }) => {
+type Card = {
+  name: string,
+  description: string,
+  technologies: string,
+  url: string
+}
+
+const CardGenerator = ({ name, description, technologies, url }: Card) => {
   return (
     <CardContainer>
       <CardContent>
@@ -153,7 +165,7 @@ function Index() {
 
       <CardGrid>
         {cardsContent.map((card, index) => (
-          <Card key={index} {...card} />
+          <CardGenerator key={index} {...card} />
         ))}
       </CardGrid>
 

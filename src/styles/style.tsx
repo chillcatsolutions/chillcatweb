@@ -29,10 +29,10 @@ export const HeaderWrapper = styled.div`
   align-items: center;
   height: 120px;
 
-  @media (max-width: 916px) {
-    background-color: ${props => props.isChecked ? "rgba(0, 0, 0, 0.10)" : ""};
-    backdrop-filter: ${props => props.isChecked ? "blur(4px)" : ""};
-  }
+  /* @media (max-width: 916px) {
+     background-color: {props => props.isChecked ? "rgba(0, 0, 0, 0.10)" : ""};
+    backdrop-filter: {props => props.isChecked ? "blur(4px)" : ""};
+  } */
 `;
 
 export const LogoWrapper = styled.div`
@@ -74,6 +74,10 @@ export const FirstPipe = styled.div`
   top: 77px;
   left: 120px;
   border-radius: 10px;
+
+  @media (max-width:451px){
+    display: none;
+  }
 `;
 
 export const MainTitle = styled.h2`
@@ -82,6 +86,10 @@ export const MainTitle = styled.h2`
   left: 140px;
   color: #aaaaaa;
   user-select: none;
+
+  @media (max-width:451px){
+    display: none;
+  }
 `;
 
 export const SecondaryTitle = styled.h2`
@@ -90,6 +98,10 @@ export const SecondaryTitle = styled.h2`
   left: 140px;
   color: #aaaaaa;
   user-select: none;
+
+  @media (max-width:451px){
+    display: none;
+  }
 `;
 
 export const MainContainer = styled.main`
@@ -180,6 +192,13 @@ export const ParraContainer = styled.div`
 
   @media (max-width: 1366px) {
     font-size: .7em;
+  }
+
+  @media (max-width: 451px){
+    padding: 10px;
+    font-size: .6em;
+    text-align: center;
+    font-weight: bold;
   }
 `;
 export const TitleContainer = styled.div`

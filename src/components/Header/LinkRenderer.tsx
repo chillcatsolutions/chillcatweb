@@ -10,6 +10,7 @@ export const List = styled.ul`
   gap: 50px;
   justify-content: space-between;
   transform: translateY(50%);
+  outline: transparent;
   transition: all .3s;
 
   @media (max-width: 1366px){
@@ -17,15 +18,17 @@ export const List = styled.ul`
   }
 
   @media (max-width: 916px){
-      position: absolute;
       flex-direction: column;
       align-items: center;
-      background-color: #000000d6;
-      backdrop-filter: blur(4px);
-      z-index: 11;
+      backdrop-filter: blur(15px);
+      border-radius: 10px;
+      background-color: #00000010;
       width: 100%;
-      left: 0;
-      top: 0;
+      margin-top: 130px;
+
+      &:hover{
+        outline: 2px solid #14761D;
+      }
     }
 `;
 

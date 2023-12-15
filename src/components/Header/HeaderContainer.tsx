@@ -102,21 +102,23 @@ useEffect(() => {
 
   return (
     <>
-      <HeaderWrapper isChecked={isChecked} id="start" {...(isHome ? {} : { style: { position: 'relative' } })}>
+      <HeaderWrapper id="start" {...(isHome ? {} : { style: { position: 'relative' } })}>
         <LogoWrapper>
-          <Start ref={startRef} onMouseEnter={onEnter} onMouseLeave={onLeave}>
-            <span ref={startTextRef}>
-              <img
-                src="/logoChillCatSolutionsv2.png"
-                alt="logo"
-                height="100px"
-                width="80px"
-              />
-            </span>
-          </Start>
-          <FirstPipe ref={firstPipeRef} />
-          <MainTitle ref={mainTitleRef}>ChillCat</MainTitle>
-          <SecondaryTitle ref={secondaryTitleRef}>Solutions</SecondaryTitle>
+          <a href="/">
+            <Start ref={startRef} onMouseEnter={onEnter} onMouseLeave={onLeave}>
+              <span ref={startTextRef}>
+                <img
+                  src="/logoChillCatSolutionsv2.png"
+                  alt="logo"
+                  height="100px"
+                  width="80px"
+                />
+              </span>
+            </Start>
+            <FirstPipe ref={firstPipeRef} />
+            <MainTitle ref={mainTitleRef}>ChillCat</MainTitle>
+            <SecondaryTitle ref={secondaryTitleRef}>Solutions</SecondaryTitle>
+          </a>
         </LogoWrapper>
 
         <NavWrapper>
