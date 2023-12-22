@@ -5,13 +5,13 @@ function ContactText() {
       const copyButtonRef = useRef<any>();
       const copyEmailHandler = () => {
         if (navigator && navigator.clipboard) {
-          navigator.clipboard.writeText("chlllcatsolutions@gmail.com").then(
+          navigator.clipboard.writeText("contact@chillcatsolutions.com").then(
             function () {
               console.log("Copying to clipboard was successful!");
             },
             function (err) {
               console.error(
-                "Async: Could not copy text: chillcatsolutions@gmail.com",
+                "Async: Could not copy text: contact@chillcatsolutions.com",
                 err
               );
             }
@@ -22,7 +22,7 @@ function ContactText() {
     <>
       <ContactContainer>
         <span id="typewriter">
-          Welcome, you can contact us through: chillcatsolutions@gmail.com
+          Welcome, you can contact us through: contact@chillcatsolutions.com
         </span>
         <CopyButton
           className="buttonShowAnimation"

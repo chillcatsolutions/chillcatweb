@@ -5,6 +5,7 @@ import styled from 'styled-components'
 
 const HambWrapper = styled.div`
       position: relative;
+      z-index: 100;
       display: none;
       right: 25px;
       

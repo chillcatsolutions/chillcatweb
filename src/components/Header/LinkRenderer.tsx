@@ -10,6 +10,7 @@ export const List = styled.ul`
   gap: 50px;
   justify-content: space-between;
   transform: translateY(50%);
+  outline: transparent;
   transition: all .3s;
 
   @media (max-width: 1366px){
@@ -17,12 +18,17 @@ export const List = styled.ul`
   }
 
   @media (max-width: 916px){
-      position: absolute;
       flex-direction: column;
       align-items: center;
-      backdrop-filter: blur(4px);
-      z-index: 1;
-      width: 100vw;
+      backdrop-filter: blur(15px);
+      border-radius: 10px;
+      background-color: #00000010;
+      width: 100%;
+      margin-top: 130px;
+
+      &:hover{
+        outline: 2px solid #14761D;
+      }
     }
 `;
 
@@ -32,6 +38,7 @@ export const ListItem = styled.li`
     border-bottom: 5px solid #cccccc10;
     width: 50%;
     text-align: center;
+    margin: 5px;
   }
 `;
 
@@ -42,7 +49,8 @@ export const StyledLink = styled.a`
   width: 100%;
   height: 100%;
   cursor: pointer;
-  
+  padding: 5px;
+
   &:hover{
     color: #14761D;
   }
@@ -55,7 +63,6 @@ export const StyledLink = styled.a`
     &:hover{
         border-bottom: 2px solid #fff;
         border-radius: 10px;
-        padding: 5px;
         border-bottom: 2px solid #14761D;
     }
   }

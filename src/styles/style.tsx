@@ -19,19 +19,20 @@ export const Container = styled.div`
 `;
 
 export const HeaderWrapper = styled.div`
-position: absolute;
-z-index: 10;
-width: 100%;
-display: flex;
-justify-content: space-between;
-flex-wrap: nowrap;
-flex-direction: row;
-align-items: center;
-height: 120px;
+  position: absolute;
+  z-index: 10;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: nowrap;
+  flex-direction: row;
+  align-items: center;
+  height: 120px;
 
-@media (max-width: 916px) {
-  
-}
+  /* @media (max-width: 916px) {
+     background-color: {props => props.isChecked ? "rgba(0, 0, 0, 0.10)" : ""};
+    backdrop-filter: {props => props.isChecked ? "blur(4px)" : ""};
+  } */
 `;
 
 export const LogoWrapper = styled.div`
@@ -45,7 +46,6 @@ export const HeaderContainerStyled = styled(HeaderContainer)`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: #333;
   padding: 10px 20px;
 `;
 
@@ -74,6 +74,10 @@ export const FirstPipe = styled.div`
   top: 77px;
   left: 120px;
   border-radius: 10px;
+
+  @media (max-width:451px){
+    display: none;
+  }
 `;
 
 export const MainTitle = styled.h2`
@@ -82,6 +86,10 @@ export const MainTitle = styled.h2`
   left: 140px;
   color: #aaaaaa;
   user-select: none;
+
+  @media (max-width:451px){
+    display: none;
+  }
 `;
 
 export const SecondaryTitle = styled.h2`
@@ -90,10 +98,17 @@ export const SecondaryTitle = styled.h2`
   left: 140px;
   color: #aaaaaa;
   user-select: none;
+
+  @media (max-width:451px){
+    display: none;
+  }
 `;
 
 export const MainContainer = styled.main`
-
+  padding: 20px 0px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 `;
 
 export const HeroContainer = styled.div`
@@ -149,8 +164,6 @@ export const CopyButton = styled.button`
   }
 `;
 
-
-
 export const IntroContainer = styled.section`
   color: #d9d9d9;
   padding: 50px;
@@ -165,4 +178,36 @@ export const FooterContainer = styled.footer`
   align-items: flex-end;
   padding: 25px;
   padding-bottom: 0;
+`;
+
+
+export const ParraContainer = styled.div`
+  flex-basis: 50%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  background-color: #ffffff10;
+  border-radius: 5px;
+  padding: 30px;
+
+  @media (max-width: 1366px) {
+    font-size: .7em;
+  }
+
+  @media (max-width: 451px){
+    padding: 10px;
+    font-size: .6em;
+    text-align: center;
+    font-weight: bold;
+  }
+`;
+export const TitleContainer = styled.div`
+  flex-basis: 50%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  background-color: #ffffff10;
+  border-radius: 5px;
+  padding: 30px;
+  text-align: center;
 `;

@@ -15,12 +15,12 @@ const Home: NextPage = () => {
 
     const typewriter = new Typewriter('#typewriter', {
       loop: false,
-      delay: 60,
+      delay: 45,
     });
 
     typewriter
-    .pauseFor(4500)
-    .typeString('Contact us at chillcatsolutions@gmail.com')
+    .pauseFor(2500)
+    .typeString('Contact us at contact@chillcatsolutions.com')
     .start();
 
   }, []);
