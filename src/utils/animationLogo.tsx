@@ -80,7 +80,7 @@ export const animationLogo = ({
           duration: .3,
           stagger: 0.2, 
         }, {
-          width: 500,
+          width: 300,
           duration: .3,
           stagger: 0.2,
         }).fromTo(mainTitleRef.current, {
