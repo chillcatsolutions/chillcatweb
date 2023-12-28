@@ -2,6 +2,9 @@ import React from 'react';
 import { MainContainer, ParraContainer, TitleContainer } from '../../styles/style';
 import styled from 'styled-components';
 import BckMission from '../../../public/BckMission.jpg';
+import Pai from '../../../public/pai.webp';
+import PixelArt from '../../../public/pixelart.png';
+import Rainy from '../../../public/rainy.jpeg';
 
 const Ourprojects = styled.div`
   color: #ccc;
@@ -10,9 +13,12 @@ const Ourprojects = styled.div`
 const CardContent = styled.div`
   opacity: 0;
   transition: opacity .5s;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
 `;
 
-const CardContainer = styled.div`
+const CardContainer = styled.div <{ $background?: string; }>` 
   background-color: #1c1c1c;
   padding: 20px;
   border-radius: 8px;
@@ -23,21 +29,22 @@ const CardContainer = styled.div`
   align-items: center;
   justify-content: center;
   text-align: center;
-  background: url(${BckMission.src});
-  transition: background 0.7s, opacity 0.7s;
-  background-position: center;
+  background: url( ${(props) => props.$background} );
   background-repeat: no-repeat;
-  object-fit: cover;
+  background-size: 100% 100%;
+  transition: background 0.7s, opacity 0.7s;
 
   &:hover {
-    background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
-      url(${BckMission.src});
+    background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url(${(props) => props.$background});
+    background-repeat: no-repeat;
+    background-size: 120% 120%;
     cursor: default;
     outline: 2px solid rgba(30, 169, 30, 0.66);
 
     ${CardContent} {
       opacity: 1;
     }
+
   }
 `;
 
@@ -64,11 +71,11 @@ const ProjectName = styled.h3`
 
 const SectionTitle = styled.h4`
   color: #14761D;
-  margin-top: 10px;
+
 `;
 
 const DescriptionContent = styled.p`
-  font-size: .8em;
+  font-size: .7em;
   color: #ccc;
 `;
 
@@ -76,27 +83,23 @@ const ProjectLink = styled.a`
   text-decoration: none;
   color: #ccc;
   user-select: none;
+  font-size: .8em;
 
   &:hover{
     color: #14761D;
   }
 `;
 
-
-const Technologies = styled.span`
-  color: #1ba729;
-`;
-
 type Card = {
   name: string,
   description: string,
-  technologies: string,
-  url: string
+  url: string,
+  background?: string,
 }
 
-const CardGenerator = ({ name, description, technologies, url }: Card) => {
+const CardGenerator = ({ name, description, url, background }: Card) => {
   return (
-    <CardContainer>
+    <CardContainer $background={background}>
       <CardContent>
         <ProjectName>{name}</ProjectName>
         <SectionTitle>Description</SectionTitle>
@@ -104,8 +107,6 @@ const CardGenerator = ({ name, description, technologies, url }: Card) => {
           {description}
         </DescriptionContent>
         {url? (<ProjectLink href={url}>Click to check the project</ProjectLink>) : ("")}
-        <SectionTitle>Technologies</SectionTitle>
-        <Technologies>{technologies}</Technologies>
       </CardContent>
 
     </CardContainer>
@@ -113,38 +114,37 @@ const CardGenerator = ({ name, description, technologies, url }: Card) => {
 };
 
 function Index() {
-
   const cardsContent = [
     {
       name: "Ramdon Pixel Art Generator",
       description:
-        "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Similique ab, iste itaque quos maiores molestiae nihil,  mollitia sed qui dolore quam, consequatur ipsam aut rem id sapiente ratione modi",
+        "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Similique ab, iste itaque quos maiores molestiae nihil.",
       url: "http:cesart.chillcatsolutions.com",
-      technologies: "Javascript, html, css",
+      background: PixelArt.src
     },
     {
     name: "lorem Ipsum",
     description:
       "Lorem ipsum molestiae nihil,  mollitia sed qui dolore quam, consequatur ipsam aut rem id sapiente ratione modi",
     url: "http:lorem.com",
-    technologies: "lorem, iPSUM, Amet",
+    background: Pai.src
   },
   {
     name: "lorem Ipsum",
     description:
       "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Similique ab, iste itaque quos maiores molestiae nihil,  mollitia sed qui dolore quam, consequatur ipsam aut rem id sapiente ratione modi",
     url: "http:lorem.com",
-    technologies: "lorem, iPSUM, Amet",
+    background: Rainy.src
   },
   {
     name: "lorem Ipsum",
     description:
       "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Similique ab, iste itaque quos maiores molestiae nihil,  mollitia sed qui dolore quam, consequatur ipsam aut rem id sapiente ratione modi",
     url: "",
-    technologies: "lorem, iPSUM, Amet",
+    background: BckMission.src
   },
   ];
-
+  console.log(cardsContent[2].background);
   return (
     <MainContainer>
 

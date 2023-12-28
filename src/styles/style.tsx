@@ -109,6 +109,10 @@ export const MainContainer = styled.main`
   display: flex;
   flex-direction: column;
   gap: 10px;
+  @media (max-width:451px){
+    padding: 10px;
+    margin: 4px;
+  }
 `;
 
 export const HeroContainer = styled.div`
