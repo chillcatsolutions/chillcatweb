@@ -2,7 +2,7 @@ import React from 'react';
 import { MainContainer, ParraContainer, TitleContainer } from '../../styles/style';
 import styled from 'styled-components';
 import BckMission from '../../../public/BckMission.jpg';
-import Pai from '../../../public/pai.webp';
+import Pai from '../../../public/radio.png';
 import PixelArt from '../../../public/pixelart.png';
 import Rainy from '../../../public/rainy.jpeg';
 
