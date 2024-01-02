@@ -3,6 +3,7 @@ import { gsap } from 'gsap';
 import LinkRenderer from './LinkRenderer';
 import styled from 'styled-components';
 import { useRouter } from 'next/router';
+import LinkHome from 'next/link';
 
 import {
   Start,
@@ -103,23 +104,23 @@ useEffect(() => {
   return (
     <>
       <HeaderWrapper id="start" {...(isHome ? {} : { style: { position: 'relative' } })}>
-        <LogoWrapper>
-          <a href="/">
-            <Start ref={startRef} onMouseEnter={onEnter} onMouseLeave={onLeave}>
-              <span ref={startTextRef}>
-                <img
-                  src="/logoChillCatSolutionsv2.png"
-                  alt="logo"
-                  height="100px"
-                  width="80px"
-                />
-              </span>
-            </Start>
-            <FirstPipe ref={firstPipeRef} />
-            <MainTitle ref={mainTitleRef}>ChillCat</MainTitle>
-            <SecondaryTitle ref={secondaryTitleRef}>Solutions</SecondaryTitle>
-          </a>
-        </LogoWrapper>
+        <LinkHome href="/">
+          <LogoWrapper>
+              <Start ref={startRef} onMouseEnter={onEnter} onMouseLeave={onLeave}>
+                <span ref={startTextRef}>
+                  <img
+                    src="/logoChillCatSolutionsv2.png"
+                    alt="logo"
+                    height="100px"
+                    width="80px"
+                  />
+                </span>
+              </Start>
+              <FirstPipe ref={firstPipeRef} />
+              <MainTitle ref={mainTitleRef}>ChillCat</MainTitle>
+              <SecondaryTitle ref={secondaryTitleRef}>Solutions</SecondaryTitle>
+          </LogoWrapper>
+        </LinkHome>
 
         <NavWrapper>
           <LinkRenderer render={links}/>
