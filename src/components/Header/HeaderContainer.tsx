@@ -25,6 +25,7 @@ type Link = {
   url: string;
 };
 export type LinkRendererProps = {
+  closeMenu(): void;
   render: Link[];
 };
 
@@ -63,7 +64,6 @@ function HeaderContainer({ references }: HeaderContainerProps) {
   ];
 
   const NavWrapper = styled.nav`
-    max-width: 700px;
     padding: 0 30px;
 
     @media (max-width: 916px) {
@@ -123,7 +123,7 @@ useEffect(() => {
         </LinkHome>
 
         <NavWrapper>
-          <LinkRenderer render={links}/>
+          <LinkRenderer closeMenu={closeMenu} render={links} />
         </NavWrapper>
 
         <Hamburguer onCheckboxChange={handleCheckboxChange}/>

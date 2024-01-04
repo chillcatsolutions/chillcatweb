@@ -6,6 +6,16 @@ import Pai from '../../../public/radio.png';
 import PixelArt from '../../../public/pixelart.png';
 import Rainy from '../../../public/rainy.jpeg';
 
+
+const Tab = styled.span`
+  color: rgba(30, 169, 30, 0.66);
+  font-weight: bold;
+  background-color: #00000090;
+  border-radius: 10px;
+  position: absolute;
+  font-size: .9em;
+`;
+
 const Ourprojects = styled.div`
   color: #ccc;
 `;
@@ -45,6 +55,9 @@ const CardContainer = styled.div <{ $background?: string; }>`
       opacity: 1;
     }
 
+    ${Tab} {
+      opacity: 0;
+    }
   }
 `;
 
@@ -90,6 +103,8 @@ const ProjectLink = styled.a`
   }
 `;
 
+
+
 type Card = {
   name: string,
   description: string,
@@ -100,6 +115,7 @@ type Card = {
 const CardGenerator = ({ name, description, url, background }: Card) => {
   return (
     <CardContainer $background={background}>
+      <Tab>{name}</Tab>
       <CardContent>
         <ProjectName>{name}</ProjectName>
         <SectionTitle>Description</SectionTitle>

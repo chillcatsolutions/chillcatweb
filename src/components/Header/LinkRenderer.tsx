@@ -68,7 +68,11 @@ export const StyledLink = styled.a`
   }
 `;
 
-function LinkRenderer({ render }: LinkRendererProps) {
+function LinkRenderer({ render, closeMenu }: LinkRendererProps) {
+  const handleLinkClick = () => {
+    closeMenu(); // Cierra el menú al hacer clic en un enlace
+  };
+
   return (
     <List>
       {render.map((link, key) => (
@@ -79,7 +83,7 @@ function LinkRenderer({ render }: LinkRendererProps) {
             </StyledLink>
           ) : (
             <Link href={link.url}>
-              <StyledLink>{link.name}</StyledLink>
+              <StyledLink onClick={handleLinkClick}>{link.name}</StyledLink>
             </Link>
           )}
         </ListItem>
