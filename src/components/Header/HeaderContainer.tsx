@@ -3,6 +3,7 @@ import { gsap } from 'gsap';
 import LinkRenderer from './LinkRenderer';
 import styled from 'styled-components';
 import { useRouter } from 'next/router';
+import LinkHome from 'next/link';
 
 import {
   Start,
@@ -24,6 +25,7 @@ type Link = {
   url: string;
 };
 export type LinkRendererProps = {
+  closeMenu(): void;
   render: Link[];
 };
 
@@ -62,7 +64,6 @@ function HeaderContainer({ references }: HeaderContainerProps) {
   ];
 
   const NavWrapper = styled.nav`
-    max-width: 700px;
     padding: 0 30px;
 
     @media (max-width: 916px) {
@@ -103,26 +104,26 @@ useEffect(() => {
   return (
     <>
       <HeaderWrapper id="start" {...(isHome ? {} : { style: { position: 'relative' } })}>
-        <LogoWrapper>
-          <a href="/">
-            <Start ref={startRef} onMouseEnter={onEnter} onMouseLeave={onLeave}>
-              <span ref={startTextRef}>
-                <img
-                  src="/logoChillCatSolutionsv2.png"
-                  alt="logo"
-                  height="100px"
-                  width="80px"
-                />
-              </span>
-            </Start>
-            <FirstPipe ref={firstPipeRef} />
-            <MainTitle ref={mainTitleRef}>ChillCat</MainTitle>
-            <SecondaryTitle ref={secondaryTitleRef}>Solutions</SecondaryTitle>
-          </a>
-        </LogoWrapper>
+        <LinkHome href="/">
+          <LogoWrapper>
+              <Start ref={startRef} onMouseEnter={onEnter} onMouseLeave={onLeave}>
+                <span ref={startTextRef}>
+                  <img
+                    src="/logoChillCatSolutionsv2.png"
+                    alt="logo"
+                    height="100px"
+                    width="80px"
+                  />
+                </span>
+              </Start>
+              <FirstPipe ref={firstPipeRef} />
+              <MainTitle ref={mainTitleRef}>ChillCat</MainTitle>
+              <SecondaryTitle ref={secondaryTitleRef}>Solutions</SecondaryTitle>
+          </LogoWrapper>
+        </LinkHome>
 
         <NavWrapper>
-          <LinkRenderer render={links}/>
+          <LinkRenderer closeMenu={closeMenu} render={links} />
         </NavWrapper>
 
         <Hamburguer onCheckboxChange={handleCheckboxChange}/>

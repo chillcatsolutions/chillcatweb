@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-
+import Link from 'next/link';
 
 const WrapperList = styled.ul`
   list-style: none;
@@ -20,11 +20,12 @@ const LinkWrapper = styled.li`
   
 `;
 
-const Link = styled.a`
+const StyledLink = styled.a`
   text-decoration: none;
   color: #aaaaaa;  
   font-size: .9em;
   transition: all .3s;
+  cursor: pointer;
 
   &:hover{
     color: #1ea91ea8;
@@ -32,9 +33,9 @@ const Link = styled.a`
 `;
 
 function FooterLinkRender() {
-  type Link = { text: string, url: string };
+  type link = { text: string, url: string };
 
-  const LinkMatrix: Link[][] = [
+  const LinkMatrix: link[][] = [
     [
       { text: 'Mission', url: '/mission' },
       { text: 'About Us', url: '/' },
@@ -58,7 +59,9 @@ function FooterLinkRender() {
           <WrapperList key={index}>
             {links.map((link, linkIndex) => (
               <LinkWrapper key={linkIndex}>
-                <Link href={link.url}>{link.text}</Link>
+                <Link href={link.url}>
+                  <StyledLink >{link.text}</StyledLink>
+                </Link>
               </LinkWrapper>
             ))}
           </WrapperList>
