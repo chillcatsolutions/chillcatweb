@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { gsap } from 'gsap';
 import LinkRenderer from './LinkRenderer';
 import styled from 'styled-components';
@@ -14,6 +14,7 @@ import {
 } from '../../styles/style';  
 import { HeroReferencesType } from '../../utils/animationLogo';
 import Hamburguer from './Hamburguer';
+import { GlobalStoreContext } from '../../pages/_app';
 
 
 type HeaderContainerProps = {
@@ -28,14 +29,17 @@ export type LinkRendererProps = {
 };
 
 function HeaderContainer({ references }: HeaderContainerProps) {
-  const [isChecked, setIsChecked] = useState(false);
+  // const [isChecked, setIsChecked] = useState(false);
+
+  const { isMenuOpen, toggleMenu } = useContext(GlobalStoreContext);
 
   const handleCheckboxChange = () => {
-    setIsChecked(!isChecked);
+    // setIsChecked(!isChecked);
+    toggleMenu();
   };
 
   const closeMenu = () => {
-    setIsChecked(false);
+    toggleMenu(false);
   };
 
   const {
@@ -56,17 +60,19 @@ function HeaderContainer({ references }: HeaderContainerProps) {
 
   const links: Link[] = [
     { name: 'Home', url: '/' },
-    { name: 'Mission', url: '/mission' },
+    { name: 'Projects', url: '/projects' },
     { name: 'Services', url: '/services' },
-    { name: 'Contact Us', url: '/contact' },
+    { name: 'Mission', url: '/mission' },
+    { name: 'Contact Us', url: '/contact' }
   ];
 
   const NavWrapper = styled.nav`
     max-width: 700px;
     padding: 0 30px;
+    display: ${isMenuOpen ? 'block' : 'none'};
 
     @media (max-width: 916px) {
-      display: ${isChecked ? 'block' : 'none'};
+      display: ${isMenuOpen ? 'block' : 'none'};
       position: absolute;
       flex-direction: column;
       align-items: center;
@@ -77,7 +83,8 @@ function HeaderContainer({ references }: HeaderContainerProps) {
 useEffect(() => {
   const handleResize = () => {
     if (window.innerWidth > 916) {
-      setIsChecked(false);
+      // setIsChecked(false);
+      toggleMenu(false);
     }
   };
 

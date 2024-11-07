@@ -1,4 +1,4 @@
-import { useEffect, useRef } from "react";
+import { createContext, useEffect, useRef, useState } from "react";
 import { HeroReferencesType, animationLogo } from "../utils/animationLogo";
 import { createGlobalStyle, ThemeProvider } from "styled-components";
 import type { AppProps } from 'next/app'
@@ -64,6 +64,25 @@ export type LinkRendererProps = {
   render: Link[];
 };
 
+export const GlobalStoreContext = createContext({
+  isMenuOpen: false,
+  toggleMenu: (newValue?: boolean) => {}
+});
+export const GlobalStoreProvider = ({ children }: {children: any}) => {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  const toggleMenu = (newValue?: boolean) => {
+      setIsMenuOpen(prevValue => typeof newValue !== 'undefined' ? newValue : !prevValue);
+  }
+
+  return (
+      <GlobalStoreContext.Provider value={{ isMenuOpen, toggleMenu }}>
+          {children}
+      </GlobalStoreContext.Provider>
+  )
+}
+
+
 function MyApp({ Component, pageProps }: AppProps) {
   
   const startRef = useRef<HTMLDivElement>();
@@ -82,6 +101,7 @@ function MyApp({ Component, pageProps }: AppProps) {
     secondaryTitleRef
   }
 
+
   useEffect(() => {
     // gsap.timeline().clear()
     animationLogo({
@@ -96,13 +116,15 @@ function MyApp({ Component, pageProps }: AppProps) {
     <>
       <GlobalStyle />
         <ThemeProvider theme={theme}>
-          <Container>
-            <HeaderContainerStyled references={references as HeroReferencesType} />
+          <GlobalStoreProvider>
+            <Container>
+              <HeaderContainerStyled references={references as HeroReferencesType} />
 
-              <Component {...pageProps} />
+                <Component {...pageProps} />
 
-            <Footer />
-          </Container>
+              <Footer />
+            </Container>
+          </GlobalStoreProvider>
         </ThemeProvider>
     </>
   );

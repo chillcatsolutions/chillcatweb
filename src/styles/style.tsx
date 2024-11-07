@@ -112,6 +112,7 @@ export const MainContainer = styled.main`
   @media (max-width:451px){
     padding: 10px;
     margin: 4px;
+    margin-top: 22px;
   }
 `;
 

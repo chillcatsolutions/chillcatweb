@@ -1,10 +1,11 @@
-import React from 'react';
+import React, { useContext, useEffect } from 'react';
 import { MainContainer, ParraContainer, TitleContainer } from '../../styles/style';
 import styled from 'styled-components';
 import BckMission from '../../../public/BckMission.jpg';
 import Pai from '../../../public/pai.webp';
 import PixelArt from '../../../public/pixelart.png';
 import Rainy from '../../../public/rainy.jpeg';
+import { GlobalStoreContext } from '../_app';
 
 const Ourprojects = styled.div`
   color: #ccc;
@@ -18,7 +19,7 @@ const CardContent = styled.div`
   gap: 20px;
 `;
 
-const CardContainer = styled.div <{ $background?: string; }>` 
+const CardContainer = styled.div <{ background?: string; }>` 
   background-color: #1c1c1c;
   padding: 20px;
   border-radius: 8px;
@@ -29,13 +30,13 @@ const CardContainer = styled.div <{ $background?: string; }>`
   align-items: center;
   justify-content: center;
   text-align: center;
-  background: url( ${(props) => props.$background} );
+  background: url( ${(props) => props.background} );
   background-repeat: no-repeat;
   background-size: 100% 100%;
   transition: background 0.7s, opacity 0.7s;
 
   &:hover {
-    background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url(${(props) => props.$background});
+    background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url(${(props) => props.background});
     background-repeat: no-repeat;
     background-size: 120% 120%;
     cursor: default;
@@ -99,7 +100,7 @@ type Card = {
 
 const CardGenerator = ({ name, description, url, background }: Card) => {
   return (
-    <CardContainer $background={background}>
+    <CardContainer background={background}>
       <CardContent>
         <ProjectName>{name}</ProjectName>
         <SectionTitle>Description</SectionTitle>
@@ -114,19 +115,26 @@ const CardGenerator = ({ name, description, url, background }: Card) => {
 };
 
 function Index() {
+
+  const { toggleMenu } = useContext(GlobalStoreContext);
+
+  useEffect(() => {
+    toggleMenu(false);
+   }, [])
+
   const cardsContent = [
     {
       name: "Ramdon Pixel Art Generator",
       description:
-        "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Similique ab, iste itaque quos maiores molestiae nihil.",
-      url: "http:cesart.chillcatsolutions.com",
+        "This one is a fun tool that generates abstract pixelated images, the idea was to generate pareidolias from random pixelated image.",
+      url: "http://cesart.chillcatsolutions.com",
       background: PixelArt.src
     },
     {
-    name: "lorem Ipsum",
+    name: "Particles Art One",
     description:
-      "Lorem ipsum molestiae nihil,  mollitia sed qui dolore quam, consequatur ipsam aut rem id sapiente ratione modi",
-    url: "http:lorem.com",
+      "Particle systems is some of my interests in terms of interaction between particles, physics, and fluid simulation, this could be used to create art as well.",
+    url: "https://github.com/cesarherreralic/particlesArtOne",
     background: Pai.src
   },
   {

@@ -10,23 +10,25 @@ const TypeWrapper = styled.span`
   }
 `;
 
-function ContactText() {
-      const copyButtonRef = useRef<any>();
-      const copyEmailHandler = () => {
-        if (navigator && navigator.clipboard) {
-          navigator.clipboard.writeText("contact@chillcatsolutions.com").then(
-            function () {
-              console.log("Copying to clipboard was successful!");
-            },
-            function (err) {
-              console.error(
-                "Async: Could not copy text: contact@chillcatsolutions.com",
-                err
-              );
-            }
-          );
-        }
-      };
+
+const copyEmailHandler = () => {
+  if (navigator && navigator.clipboard) {
+    navigator.clipboard.writeText("contact@chillcatsolutions.com").then(
+      function () {
+        console.log("Copying to clipboard was successful!");
+      },
+      function (err) {
+        console.error(
+          "Async: Could not copy text: contact@chillcatsolutions.com",
+          err
+        );
+      }
+    );
+  }
+};
+
+const ContactText = () => {
+  const copyButtonRef = useRef<any>();
   return (
     <>
       <ContactContainer>

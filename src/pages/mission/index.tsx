@@ -1,7 +1,8 @@
-import React from 'react'
+import React, { useContext, useEffect } from 'react'
 import styled from 'styled-components'
 import { MainContainer, ParraContainer, TitleContainer } from '../../styles/style';
 import BckMission from '../../../public/BckMission.jpg';
+import { GlobalStoreContext } from '../_app';
 
 
 
@@ -58,6 +59,13 @@ const Objetives = styled.section`
 `;
 /*Objetives*/
 function index() {
+
+  const { toggleMenu } = useContext(GlobalStoreContext);
+
+  useEffect(() => {
+    toggleMenu(false);
+   }, [])
+
   return (
     <MainContainer>
       <Mission>

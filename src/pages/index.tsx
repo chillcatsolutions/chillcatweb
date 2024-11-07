@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useContext, useEffect } from "react";
 import type { NextPage } from "next";
 import Typewriter from 'typewriter-effect/dist/core';
 
@@ -8,11 +8,14 @@ import {
   IntroContainer,
   MainContainer,
 } from "../styles/style";
+import { GlobalStoreContext } from "./_app";
 
 const Home: NextPage = () => {
 
-  useEffect(() => {
+  const { toggleMenu } = useContext(GlobalStoreContext);
 
+  useEffect(() => {
+    toggleMenu(false);
     const typewriter = new Typewriter('#typewriter', {
       loop: false,
       delay: 45,
@@ -20,14 +23,16 @@ const Home: NextPage = () => {
 
     typewriter
     .pauseFor(2500)
-    .typeString('Contact us at contact@chillcatsolutions.com')
+    .typeString("let's connect contact@chillcatsolutions.com")
     .start();
 
   }, []);
 
 
   const Intro = () => (
-    <IntroContainer>Welcome to ChillCat Solutions</IntroContainer>
+    <IntroContainer>
+      Welcome to ChillCat Solutions by Cesar Herrera
+    </IntroContainer>
   );
 
   return (
