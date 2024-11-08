@@ -174,6 +174,11 @@ export const IntroContainer = styled.section`
   padding: 50px;
 `;
 
+export const IntroContentContainer = styled.section`
+  color: #d9d9d9;
+  padding: 50px;
+`
+
 export const FooterContainer = styled.footer`
   width: 100%;
   height: 550px;

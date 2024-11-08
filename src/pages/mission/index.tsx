@@ -70,33 +70,33 @@ function index() {
     <MainContainer>
       <Mission>
         <TitleContainer>
-          <h2>Our Mission is to <span>design and built on proof</span></h2>
+          <h2>Mission: <span>create Art by using code</span></h2>
         </TitleContainer>
 
         <ParraContainer>
           <p>
-            Our Company has the porpuse to bring Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatem cum quasi minus enim. Sed ex illum impedit odit cum aut temporibus quo distinctio quod, officiis laborum odio eum qui fugiat? and more Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia delectus nesciunt, nam qui, ducimus labore aliquam, harum est earum ab sapiente impedit laborum placeat facere. Corrupti nisi repudiandae sequi. Quod!
+            Always feeling the need to explore the possibilities of using code to create digital art as a visual interesting experience.
           </p>
         </ParraContainer>
       </Mission>
 
       <Vision>
-        <TitleContainer> <h2>Our Vision</h2> </TitleContainer>
+        <TitleContainer> <h2>Vision: <span>Project on public spaces</span></h2> </TitleContainer>
         <ParraContainer>
           <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil aspernatur consequatur ipsam, impedit blanditiis molestias eos, sint asperiores consectetur ullam labore mollitia veritatis. Consequuntur et officiis voluptates neque cupiditate cumque! Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minus facere ducimus aut perspiciatis officiis voluptate eaque at distinctio libero ullam facilis illo neque laborum autem, saepe aperiam hic minima veritatis.
+            The idea is to have several art pieces that can be transported to public spaces in order to interact with the people and the architecture of the environment where it is projected   
           </p>
         </ParraContainer>
       </Vision>
 
-      <Objetives>
+      {/* <Objetives>
       <TitleContainer> <h2>Objetives</h2> </TitleContainer>
         <ParraContainer>
           <p>
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil aspernatur consequatur ipsam, impedit blanditiis molestias eos, sint asperiores consectetur ullam labore mollitia veritatis. Consequuntur et officiis voluptates neque cupiditate cumque! Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minus facere ducimus aut perspiciatis officiis voluptate eaque at distinctio libero ullam facilis illo neque laborum autem, saepe aperiam hic minima veritatis.
           </p>
         </ParraContainer>
-      </Objetives>
+      </Objetives> */}
     </MainContainer>
   )
 }

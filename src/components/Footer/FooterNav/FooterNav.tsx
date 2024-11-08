@@ -86,7 +86,7 @@ function FooterNav() {
       <FooterNavSocial>
         <IconRender/>
       </FooterNavSocial>
-      <span>Chillcatsolutions Copyright by Chillcatsolutions</span>
+      <span>Chillcatsolutions by Cesar Herrera</span>
     </FooterNavWrapper>
   );
 }

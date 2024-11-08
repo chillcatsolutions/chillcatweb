@@ -29,17 +29,10 @@ export type LinkRendererProps = {
 };
 
 function HeaderContainer({ references }: HeaderContainerProps) {
-  // const [isChecked, setIsChecked] = useState(false);
-
   const { isMenuOpen, toggleMenu } = useContext(GlobalStoreContext);
 
   const handleCheckboxChange = () => {
-    // setIsChecked(!isChecked);
     toggleMenu();
-  };
-
-  const closeMenu = () => {
-    toggleMenu(false);
   };
 
   const {
@@ -83,24 +76,14 @@ function HeaderContainer({ references }: HeaderContainerProps) {
 useEffect(() => {
   const handleResize = () => {
     if (window.innerWidth > 916) {
-      // setIsChecked(false);
       toggleMenu(false);
     }
   };
 
-  const handleLinkClick = () => {
-    closeMenu();
-  };
-
   window.addEventListener('resize', handleResize);
-
-  const links = document.querySelectorAll('StyledLink');
-  links.forEach(link => link.addEventListener('click', handleLinkClick));
 
   return () => {
     window.removeEventListener('resize', handleResize);
-
-    links.forEach(link => link.removeEventListener('click', handleLinkClick));
   };
 }, []);
 

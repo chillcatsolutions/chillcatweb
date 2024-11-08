@@ -136,23 +136,8 @@ function Index() {
       "Particle systems is some of my interests in terms of interaction between particles, physics, and fluid simulation, this could be used to create art as well.",
     url: "https://github.com/cesarherreralic/particlesArtOne",
     background: Pai.src
-  },
-  {
-    name: "lorem Ipsum",
-    description:
-      "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Similique ab, iste itaque quos maiores molestiae nihil,  mollitia sed qui dolore quam, consequatur ipsam aut rem id sapiente ratione modi",
-    url: "http:lorem.com",
-    background: Rainy.src
-  },
-  {
-    name: "lorem Ipsum",
-    description:
-      "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Similique ab, iste itaque quos maiores molestiae nihil,  mollitia sed qui dolore quam, consequatur ipsam aut rem id sapiente ratione modi",
-    url: "",
-    background: BckMission.src
-  },
+  }
   ];
-  console.log(cardsContent[2].background);
   return (
     <MainContainer>
 
@@ -161,13 +146,7 @@ function Index() {
           <h2>Our Projects</h2>
         </TitleContainer>
         <ParraContainer>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Aut nam
-          laborum totam? Sint nihil ullam placeat rem. Error ut doloremque
-          saepe, sed dolor vitae laborum, iusto, consectetur aperiam velit
-          provident. Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-          Cumque itaque magnam error at nemo! Aspernatur sed exercitationem
-          soluta laboriosam, adipisci similique tempora, eaque cum, architecto
-          fugit in eum tempore quidem?
+          This is a list of the projects and tools I've built to explore the digital art + code experiences. 
         </ParraContainer>
       </Ourprojects>
 
