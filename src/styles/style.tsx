@@ -1,5 +1,6 @@
 import styled, { keyframes } from "styled-components";
 import HeaderContainer from "../components/Header/HeaderContainer";
+import React from "react";
 
 interface IStart {
   ref?: any;
@@ -18,7 +19,7 @@ export const Container = styled.div`
   height: 100%;
 `;
 
-export const HeaderWrapper = styled.div`
+export const HeaderWrapper = styled.div<React.HTMLAttributes<HTMLDivElement>>`
   position: absolute;
   z-index: 10;
   width: 100%;
@@ -49,7 +50,15 @@ export const HeaderContainerStyled = styled(HeaderContainer)`
   padding: 10px 20px;
 `;
 
-export const Start = styled.div<IStart>`
+const Div = React.forwardRef<HTMLDivElement, React.HTMLAttributes<HTMLDivElement>>((props, ref) => (
+  <div ref={ref} {...props} />
+));
+
+const H2 = React.forwardRef<HTMLHeadingElement, React.HTMLAttributes<HTMLHeadingElement>>((props, ref) => (
+  <h2 ref={ref} {...props} />
+));
+
+export const Start = styled(Div)`
   font-size: 26px;
   margin-left: 20px;
   margin-top: 20px;
@@ -66,7 +75,7 @@ export const Start = styled.div<IStart>`
   }
 `;
 
-export const FirstPipe = styled.div`
+export const FirstPipe = styled(Div)`
   background-color: rgba(30, 169, 30, 0.66);
   height: 4px;
   width: 500px;
@@ -80,7 +89,7 @@ export const FirstPipe = styled.div`
   }
 `;
 
-export const MainTitle = styled.h2`
+export const MainTitle = styled(H2)`
   position: absolute;
   top: 25px;
   left: 140px;
@@ -92,7 +101,7 @@ export const MainTitle = styled.h2`
   }
 `;
 
-export const SecondaryTitle = styled.h2`
+export const SecondaryTitle = styled(H2)`
   position: absolute;
   top: 142px;
   left: 140px;
@@ -105,7 +114,7 @@ export const SecondaryTitle = styled.h2`
 `;
 
 export const MainContainer = styled.main`
-  padding: 20px 0px;
+  padding: 20px 125px;
   display: flex;
   flex-direction: column;
   gap: 10px;
@@ -149,7 +158,11 @@ const buttonShowAnimation = keyframes`
   }
 `;
 
-export const CopyButton = styled.button`
+const ButtonSimple = React.forwardRef<HTMLButtonElement, React.HTMLAttributes<HTMLButtonElement> & { type?: "button" | "reset" | "submit"}>((props, ref) => (
+  <button ref={ref} {...props} />
+));
+
+export const CopyButton = styled(ButtonSimple)`
   cursor: pointer;
   background-color: #a700005c;
   width: 100px;

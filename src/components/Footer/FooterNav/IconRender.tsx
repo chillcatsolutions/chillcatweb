@@ -1,23 +1,23 @@
 import React from "react";
 import styled from "styled-components";
 
-const IconsWrapper = styled.ul`
+const IconsWrapper = styled.ul<React.PropsWithChildren<{}>>`
   list-style: none;
   display: flex;
   gap: 10px;
 `;
 
-const IconWrapper = styled.li`
+const IconWrapper = styled.li<React.PropsWithChildren<{}>>`
 `;
 
-const Icon = styled.a`
+const Icon = styled.a<React.AnchorHTMLAttributes<HTMLAnchorElement>>`
   text-decoration: none;
   color: #aaaaaa;
   width: 100%;
   height: 100%;
 `;
 
-const Svg = styled.svg`
+const Svg = styled.svg<React.SVGProps<SVGSVGElement>>`
   border-radius: 10px;
   fill: #aaa;
   transition: all .3s;

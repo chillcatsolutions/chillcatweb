@@ -12,7 +12,7 @@ export const StyledMain = styled.main`
   margin-top: 20px;
 `;
 
-const index = () => {
+const Index = () => {
 
   const { toggleMenu } = useContext(GlobalStoreContext);
 
@@ -40,7 +40,7 @@ const index = () => {
         <li>
           <StyledSection>
             <StyledLink href={"https://www.linkedin.com/in/cesar-herrera-37514243/"} target="_blank" rel="noopener noreferrer">
-                Cesar Herrera's LinkedIn profile
+                Cesar Herrera&apos;s LinkedIn profile
             </StyledLink>
           </StyledSection>
         </li>
@@ -49,4 +49,4 @@ const index = () => {
   )
 }
 
-export default index
+export default Index

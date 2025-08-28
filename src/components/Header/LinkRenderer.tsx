@@ -32,7 +32,7 @@ export const List = styled.ul`
     }
 `;
 
-export const ListItem = styled.li`  
+export const ListItem = styled.li<React.PropsWithChildren<{}>>`  
 
   @media (max-width: 916px){
     border-bottom: 5px solid #cccccc10;
@@ -42,7 +42,7 @@ export const ListItem = styled.li`
   }
 `;
 
-export const StyledLink = styled.a`
+export const StyledLink = styled.a<React.AnchorHTMLAttributes<HTMLAnchorElement>>`
   color: #AAAAAA;
   text-decoration: none;
   transition: all .3s;

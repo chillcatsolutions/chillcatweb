@@ -58,7 +58,7 @@ const Objetives = styled.section`
 }
 `;
 /*Objetives*/
-function index() {
+function Index() {
 
   const { toggleMenu } = useContext(GlobalStoreContext);
 
@@ -101,4 +101,4 @@ function index() {
   )
 }
 
-export default index
+export default Index

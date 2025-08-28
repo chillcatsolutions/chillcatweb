@@ -15,6 +15,7 @@ import {
 import { HeroReferencesType } from '../../utils/animationLogo';
 import Hamburguer from './Hamburguer';
 import { GlobalStoreContext } from '../../pages/_app';
+import Link from 'next/link';
 
 
 type HeaderContainerProps = {
@@ -43,11 +44,11 @@ function HeaderContainer({ references }: HeaderContainerProps) {
     secondaryTitleRef,
   } = references;
 
-  const onEnter = (e: MouseEvent) => {
+  const onEnter: React.MouseEventHandler<HTMLDivElement> = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
     gsap.to(e.currentTarget, { backgroundColor: 'rgb(50, 6, 3, 0.8)' });
   };
 
-  const onLeave = (e: MouseEvent) => {
+  const onLeave: React.MouseEventHandler<HTMLDivElement> = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
     gsap.to(e.currentTarget, { backgroundColor: 'rgba(30,30,30,0.66)' });
   };
 
@@ -85,7 +86,7 @@ useEffect(() => {
   return () => {
     window.removeEventListener('resize', handleResize);
   };
-}, []);
+}, [toggleMenu]);
 
   const router = useRouter();
   const isHome = router.pathname === '/';
@@ -94,21 +95,23 @@ useEffect(() => {
     <>
       <HeaderWrapper id="start" {...(isHome ? {} : { style: { position: 'relative' } })}>
         <LogoWrapper>
-          <a href="/">
-            <Start ref={startRef} onMouseEnter={onEnter} onMouseLeave={onLeave}>
-              <span ref={startTextRef}>
-                <img
-                  src="/logoChillCatSolutionsv2.png"
-                  alt="logo"
-                  height="100px"
-                  width="80px"
-                />
-              </span>
-            </Start>
-            <FirstPipe ref={firstPipeRef} />
-            <MainTitle ref={mainTitleRef}>ChillCat</MainTitle>
-            <SecondaryTitle ref={secondaryTitleRef}>Solutions</SecondaryTitle>
-          </a>
+          <Link href="/">
+            <>
+              <Start ref={startRef} onMouseEnter={onEnter} onMouseLeave={onLeave}>
+                <span ref={startTextRef}>
+                  <img
+                    src="/logoChillCatSolutionsv2.png"
+                    alt="logo"
+                    height="100px"
+                    width="80px"
+                  />
+                </span>
+              </Start>
+              <FirstPipe ref={firstPipeRef} />
+              <MainTitle ref={mainTitleRef}>ChillCat</MainTitle>
+              <SecondaryTitle ref={secondaryTitleRef}>Solutions</SecondaryTitle>
+            </>
+          </Link>
         </LogoWrapper>
 
         <NavWrapper>

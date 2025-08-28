@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 
-const WrapperList = styled.ul`
+const WrapperList = styled.ul<React.PropsWithChildren<{}>>`
   list-style: none;
   display:flex;
   flex-direction: column;
@@ -16,11 +16,11 @@ const WrapperList = styled.ul`
   }
 `;
 
-const LinkWrapper = styled.li`
+const LinkWrapper = styled.li<React.PropsWithChildren<{}>>`
   
 `;
 
-const Link = styled.a`
+const Link = styled.a<React.AnchorHTMLAttributes<HTMLAnchorElement>>`
   text-decoration: none;
   color: #aaaaaa;  
   font-size: .9em;
@@ -36,16 +36,16 @@ function FooterLinkRender() {
 
   const LinkMatrix: Link[][] = [
     [
+      { text: 'Projects', url: '/projects' },
+    ],
+    [
+      { text: 'Contact', url: '/contact' }
+    ],
+    [
       { text: 'Mission', url: '/mission' }
     ],
     [
-      { text: 'About Us', url: '/' }
-    ],
-    [
-      { text: 'More Projects', url: '/projects' },
-    ],
-    [
-      { text: 'Developers', url: '/'},
+      { text: 'Services', url: '/'},
     ]
   ];
 

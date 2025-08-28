@@ -19,6 +19,7 @@
     "typewriter-effect": "^2.18.2"
   },
   "devDependencies": {
+    "@types/node": "^12.20.55",
     "@types/react": "17.0.20",
     "babel-plugin-styled-components": "^1.13.2",
     "eslint": "7.32.0",

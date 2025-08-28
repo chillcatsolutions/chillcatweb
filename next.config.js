@@ -5,4 +5,13 @@ module.exports = {
     loader: 'imgix',
     path: '',
   },
+  exportPathMap: async function () {
+    return {
+      '/': { page: '/' },
+      '/mission': { page: '/mission' },
+      '/projects': { page: '/projects' },
+      '/services': { page: '/' },
+      '/contact': { page: '/contact' },
+    };
+  },
 }

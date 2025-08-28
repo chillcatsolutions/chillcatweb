@@ -1,10 +1,10 @@
 import React, { useContext, useEffect } from 'react';
 import { MainContainer, ParraContainer, TitleContainer } from '../../styles/style';
 import styled from 'styled-components';
-import BckMission from '../../../public/BckMission.jpg';
-import Pai from '../../../public/pai.webp';
+// import BckMission from '../../../public/BckMission.jpg';
+import Pai from '../../../public/pai.jpg';
 import PixelArt from '../../../public/pixelart.png';
-import Rainy from '../../../public/rainy.jpeg';
+// import Rainy from '../../../public/rainy.jpeg';
 import { GlobalStoreContext } from '../_app';
 
 const Ourprojects = styled.div`
@@ -19,7 +19,13 @@ const CardContent = styled.div`
   gap: 20px;
 `;
 
-const CardContainer = styled.div <{ background?: string; }>` 
+const Div = React.forwardRef<HTMLDivElement, React.HTMLAttributes<HTMLDivElement> & { background?: string}>((props, ref) => (
+  <div ref={ref} {...props} />
+));
+
+Div.displayName = 'Div';
+
+const CardContainer = styled(Div)` 
   background-color: #1c1c1c;
   padding: 20px;
   border-radius: 8px;
@@ -80,7 +86,7 @@ const DescriptionContent = styled.p`
   color: #ccc;
 `;
 
-const ProjectLink = styled.a`
+const ProjectLink = styled.a<React.AnchorHTMLAttributes<HTMLAnchorElement>>`
   text-decoration: none;
   color: #ccc;
   user-select: none;
@@ -143,10 +149,10 @@ function Index() {
 
       <Ourprojects>
         <TitleContainer>
-          <h2>Our Projects</h2>
+          <h2>Projects</h2>
         </TitleContainer>
         <ParraContainer>
-          This is a list of the projects and tools I've built to explore the digital art + code experiences. 
+          This is a list of the projects and tools I&apos;ve built to explore the digital art + code experiences. 
         </ParraContainer>
       </Ourprojects>
 

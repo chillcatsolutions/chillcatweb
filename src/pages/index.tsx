@@ -12,7 +12,7 @@ import {
 import { GlobalStoreContext } from "./_app";
 import styled from "styled-components";
 
-export const StyledLink = styled.a`
+export const StyledLink = styled.a<React.AnchorHTMLAttributes<HTMLAnchorElement>>`
   color: #d7dc05;
   text-decoration: none;
   transition: all .3s;

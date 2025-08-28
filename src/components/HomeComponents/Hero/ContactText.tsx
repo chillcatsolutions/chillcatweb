@@ -2,7 +2,7 @@ import React, { useRef } from 'react'
 import { ContactContainer, CopyButton } from '../../../styles/style';
 import styled from 'styled-components';
 
-const TypeWrapper = styled.span`
+const TypeWrapper = styled.span<React.HTMLAttributes<HTMLDivElement>>`
   
   @media (max-width:451px){
     font-size: .85em;

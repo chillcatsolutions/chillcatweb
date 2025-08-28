@@ -1,7 +1,7 @@
 import React, { useContext, useEffect } from 'react'
 import { GlobalStoreContext } from '../_app';
 
-function index() {
+function Index() {
 
   const { toggleMenu } = useContext(GlobalStoreContext);
 
@@ -16,4 +16,4 @@ function index() {
   )
 }
 
-export default index
+export default Index
